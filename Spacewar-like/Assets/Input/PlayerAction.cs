@@ -41,6 +41,14 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""CheatDeath"",
+                    ""type"": ""Button"",
+                    ""id"": ""0da9bc08-d977-4995-b5b1-31a6b124a99c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -142,6 +150,17 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""934fb33e-e6e4-4a22-9b80-1eb8ae78f43a"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""CheatDeath"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -731,6 +750,7 @@ public class @PlayerAction : IInputActionCollection, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+        m_Player_CheatDeath = m_Player.FindAction("CheatDeath", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -795,6 +815,7 @@ public class @PlayerAction : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Fire;
+    private readonly InputAction m_Player_CheatDeath;
     public struct PlayerActions
     {
         private @PlayerAction m_Wrapper;
@@ -802,6 +823,7 @@ public class @PlayerAction : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
+        public InputAction @CheatDeath => m_Wrapper.m_Player_CheatDeath;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -820,6 +842,9 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                 @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                @CheatDeath.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCheatDeath;
+                @CheatDeath.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCheatDeath;
+                @CheatDeath.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCheatDeath;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -833,6 +858,9 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
+                @CheatDeath.started += instance.OnCheatDeath;
+                @CheatDeath.performed += instance.OnCheatDeath;
+                @CheatDeath.canceled += instance.OnCheatDeath;
             }
         }
     }
@@ -992,6 +1020,7 @@ public class @PlayerAction : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
+        void OnCheatDeath(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
