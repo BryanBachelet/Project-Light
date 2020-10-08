@@ -18,9 +18,18 @@ public class Manager_Score : MonoBehaviour
 
     private Manager_JoinPlayer manager_JoinPlayer;
     private static bool activeReset;
+
+    public GameObject prefabExplosion;
+    static GameObject explosionParticles;
+    static GameObject lastExplosion;
+    static float tempsEcouleExplosion;
     // Start is called before the first frame update
     void Start()
     {
+        if(prefabExplosion != null)
+        {
+            explosionParticles = prefabExplosion;
+        }
         manager_JoinPlayer = GetComponent<Manager_JoinPlayer>();
     }
 
@@ -30,13 +39,26 @@ public class Manager_Score : MonoBehaviour
         {
             SetScore();
         }
+        if(lastExplosion != null)
+        {
+            tempsEcouleExplosion += Time.deltaTime;
+            if(tempsEcouleExplosion > 2)
+            {
+                Destroy(lastExplosion);
+                lastExplosion = null;
+            }
+
+        }
         
     }
 
     public static void PlayerDeath(GameObject player)
     {
+        lastExplosion = Instantiate(explosionParticles, player.transform.position, player.transform.rotation);
         player.GetComponent<Player_Team>().currentShip = Player_Team.ShipState.Die;
-        player.SetActive(false);
+        
+        tempsEcouleExplosion = 0;
+        //player.SetActive(false);
         activeReset = true;
     }
 

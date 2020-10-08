@@ -14,14 +14,63 @@ public class Player_Shoot : MonoBehaviour
     public float lifetimeOfProjectile;
 
     private List<GameObject> projectileAlive =  new List<GameObject>();
+    [SerializeField]
     private bool activeTir;
-   
 
-    
+    public float timeBtwShoot;
+    public float timeEcouleShoot;
+    public bool addBullet;
+    public void Update()
+    {
+        if (activeTir)
+        {
+
+            if(timeEcouleShoot >= timeBtwShoot)
+            {
+                AddShot();
+                if(addBullet)
+                {
+                    addBullet = false;
+                    activeTir = false;
+
+                }
+
+                if(activeTir)
+                {
+                    addBullet = true;
+                }
+
+                timeEcouleShoot = 0;
+
+            }
+            else
+            {
+                timeEcouleShoot += Time.deltaTime;
+            }
+
+        }
+    }
     public void Shoot(InputAction.CallbackContext ctx)
     {
-        if (projectileNumberAlive < maxProjectileNumber && ctx.performed )
+        if (projectileNumberAlive < maxProjectileNumber && ctx.performed)
         {
+            if (!activeTir)
+            {
+                if(!addBullet)
+                {
+                    activeTir = true;
+                    return;
+                }
+                timeEcouleShoot = timeBtwShoot;
+                return;
+            }
+            else
+            {
+                if(addBullet)
+                {
+                    return;
+                }
+            }
             GameObject bullet = Instantiate(projectileShoot, transform.position + instantiatePos, Quaternion.identity);
             Projectile_Behavior currentProjectile = bullet.GetComponent<Projectile_Behavior>();
             currentProjectile.lifetime = lifetimeOfProjectile;
@@ -30,10 +79,16 @@ public class Player_Shoot : MonoBehaviour
             currentProjectile.player_Team = GetComponent<Player_Team>();
             currentProjectile.direction = transform.forward;
             projectileAlive.Add(bullet);
+            Debug.Log(activeTir);
+
+
             activeTir = true;
-            AddShot();
+
+            Debug.Log(activeTir);
+
             return;
         }
+        
         
 
     }
