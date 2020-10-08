@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 
 public class Menu_ScreenSelection : MonoBehaviour
@@ -13,10 +14,21 @@ public class Menu_ScreenSelection : MonoBehaviour
 
     public Color[] colors = new Color[3];
 
+    public int readyCheck;
+
+    public int indexSceneGame;
+
+    public static Menu_ScreenSelection screenSelection ;
+
+    private void Awake()
+    {
+        screenSelection = this;
+    }
+
 
     void Update()
     {
-        if (Gamepad.current.aButton.wasPressedThisFrame)
+        if (Gamepad.current.xButton.wasPressedThisFrame)
         {
             if (CheckGamepad(Gamepad.current,Static_Variable.gamepad))
             {
@@ -29,7 +41,21 @@ public class Menu_ScreenSelection : MonoBehaviour
 
                 }
             }
+            if(readyCheck == index && index>1)
+            {
+                SceneManager.LoadScene(indexSceneGame);
+            }
         }
+    }
+
+    public void SendReady()
+    {
+        readyCheck++;
+    }
+
+    public void SendUnready()
+    {
+        readyCheck--;
     }
 
 

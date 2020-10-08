@@ -151,7 +151,7 @@ public class @PlayerAction : IInputActionCollection, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Navigate"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""91009ec7-053f-4a60-b8e9-56204ef9b870"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -159,7 +159,7 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""Submit"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""f2a24b37-eef4-4d3b-a1bf-f67dfe41eb51"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -167,7 +167,7 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""Cancel"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""366f56b9-9dcc-4242-8221-1ee0486a27ab"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -226,6 +226,30 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                     ""type"": ""PassThrough"",
                     ""id"": ""9ac8b365-eaca-4e0b-ad69-8a170d0ed8de"",
                     ""expectedControlType"": ""Quaternion"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Scroll Horizontal"",
+                    ""type"": ""Value"",
+                    ""id"": ""e5e0a63e-4788-4680-b941-2d3369a0ce52"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Return"",
+                    ""type"": ""Value"",
+                    ""id"": ""2338059c-cf23-4b7e-860d-80123c4f1d0b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Validate"",
+                    ""type"": ""Button"",
+                    ""id"": ""b98548aa-7d4c-4b91-99fb-308d951dd9a5"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -519,17 +543,6 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""9bf6281b-fff6-4a22-b9f8-6f321f025983"",
-                    ""path"": ""<XInputController>/buttonEast"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Cancel"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""c52c8e0b-8179-41d3-b8a1-d149033bbe86"",
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
@@ -659,6 +672,61 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                     ""action"": ""TrackedDeviceOrientation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Ship select"",
+                    ""id"": ""0e820836-8ac1-43c8-9b18-ac26d8205d28"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": ""AxisDeadzone"",
+                    ""groups"": """",
+                    ""action"": ""Scroll Horizontal"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""6755301a-f543-4762-99fd-d7bc52fa9bef"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Scroll Horizontal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""ac9d7a4d-1959-4502-b549-08e46e7149f2"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Scroll Horizontal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d90e6807-835f-4c39-b36b-e80d08c440cc"",
+                    ""path"": ""<XInputController>/buttonEast"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Return"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""767f80e5-ec5a-4776-9bbd-30a63675b0fa"",
+                    ""path"": ""<XInputController>/buttonWest"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Validate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -743,6 +811,9 @@ public class @PlayerAction : IInputActionCollection, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        m_UI_ScrollHorizontal = m_UI.FindAction("Scroll Horizontal", throwIfNotFound: true);
+        m_UI_Return = m_UI.FindAction("Return", throwIfNotFound: true);
+        m_UI_Validate = m_UI.FindAction("Validate", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -851,6 +922,9 @@ public class @PlayerAction : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_RightClick;
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
+    private readonly InputAction m_UI_ScrollHorizontal;
+    private readonly InputAction m_UI_Return;
+    private readonly InputAction m_UI_Validate;
     public struct UIActions
     {
         private @PlayerAction m_Wrapper;
@@ -865,6 +939,9 @@ public class @PlayerAction : IInputActionCollection, IDisposable
         public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
         public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
+        public InputAction @ScrollHorizontal => m_Wrapper.m_UI_ScrollHorizontal;
+        public InputAction @Return => m_Wrapper.m_UI_Return;
+        public InputAction @Validate => m_Wrapper.m_UI_Validate;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -904,6 +981,15 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                 @TrackedDeviceOrientation.started -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
+                @ScrollHorizontal.started -= m_Wrapper.m_UIActionsCallbackInterface.OnScrollHorizontal;
+                @ScrollHorizontal.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnScrollHorizontal;
+                @ScrollHorizontal.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnScrollHorizontal;
+                @Return.started -= m_Wrapper.m_UIActionsCallbackInterface.OnReturn;
+                @Return.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnReturn;
+                @Return.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnReturn;
+                @Validate.started -= m_Wrapper.m_UIActionsCallbackInterface.OnValidate;
+                @Validate.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnValidate;
+                @Validate.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnValidate;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -938,6 +1024,15 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                 @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
+                @ScrollHorizontal.started += instance.OnScrollHorizontal;
+                @ScrollHorizontal.performed += instance.OnScrollHorizontal;
+                @ScrollHorizontal.canceled += instance.OnScrollHorizontal;
+                @Return.started += instance.OnReturn;
+                @Return.performed += instance.OnReturn;
+                @Return.canceled += instance.OnReturn;
+                @Validate.started += instance.OnValidate;
+                @Validate.performed += instance.OnValidate;
+                @Validate.canceled += instance.OnValidate;
             }
         }
     }
@@ -1005,5 +1100,8 @@ public class @PlayerAction : IInputActionCollection, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+        void OnScrollHorizontal(InputAction.CallbackContext context);
+        void OnReturn(InputAction.CallbackContext context);
+        void OnValidate(InputAction.CallbackContext context);
     }
 }
