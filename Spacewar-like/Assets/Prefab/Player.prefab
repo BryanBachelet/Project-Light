@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3917556355015932740}
   - component: {fileID: 4452221859658116501}
   - component: {fileID: 2235845772396629789}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4774,7 +4774,7 @@ GameObject:
   - component: {fileID: 6421454625133617629}
   - component: {fileID: 8169949605117241484}
   - component: {fileID: 1748727049721077024}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9545,7 +9545,7 @@ GameObject:
   - component: {fileID: -3632661705183286310}
   - component: {fileID: 4814573641297482725}
   - component: {fileID: -1034118943587774874}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -9860,7 +9860,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!114 &-3632661705183286310
 MonoBehaviour:
@@ -9959,7 +9959,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7985307307239994701}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Reactor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9993,7 +9993,7 @@ GameObject:
   - component: {fileID: 2612529651692420063}
   - component: {fileID: 2970250112271685678}
   - component: {fileID: 6693133957640655455}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "Vis\xE9"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10071,7 +10071,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8066974047111470121}
   - component: {fileID: 6768126632673236700}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
