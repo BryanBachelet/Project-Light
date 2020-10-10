@@ -12,6 +12,13 @@ public class Manager_Score : MonoBehaviour
     public int blueScore = 0;
     public int redScore = 0;
 
+    [Header("StartPhase")]
+    public float startPhasetimer;
+    public Text timer;
+
+
+    private float countStartPhase;
+
     [Header("Affichage")]
     public Text scoreBlueUi;
     public Text scoreRedUi;
@@ -31,10 +38,25 @@ public class Manager_Score : MonoBehaviour
             explosionParticles = prefabExplosion;
         }
         manager_JoinPlayer = GetComponent<Manager_JoinPlayer>();
+
+        ActiveStart();
+       
     }
 
     private void Update()
     {
+        if(gameState == StateOfGame.Start)
+        {
+            timer.text = (startPhasetimer - countStartPhase).ToString("F0");
+
+            if (countStartPhase > startPhasetimer)
+            {
+                FinishStart();
+            }
+            countStartPhase += Time.deltaTime;
+        }
+
+
         if (activeReset)
         {
             SetScore();
@@ -52,13 +74,37 @@ public class Manager_Score : MonoBehaviour
         
     }
 
+    public void FinishStart()
+    {
+        DeactivePlayer(true);
+        gameState = StateOfGame.Game;
+        timer.enabled = false;
+    }
+
+    public void ActiveStart()
+    {
+        timer.enabled = true;
+        gameState = StateOfGame.Start;
+        DeactivePlayer(false);
+        countStartPhase = 0;
+    }
+
+
+    public void DeactivePlayer(bool stateBool)
+    {
+        for (int i = 0; i < manager_JoinPlayer.player.Length; i++)
+        {
+            manager_JoinPlayer.player[i].GetComponent<Tool_ScriptManager>().Disable(stateBool);
+        }
+    }
+
+
     public static void PlayerDeath(GameObject player)
     {
        // lastExplosion = Instantiate(explosionParticles, player.transform.position, player.transform.rotation);
         player.GetComponent<Player_Team>().currentShip = Player_Team.ShipState.Die;
         
         tempsEcouleExplosion = 0;
-        //player.SetActive(false);
         activeReset = true;
     }
 
@@ -87,8 +133,7 @@ public class Manager_Score : MonoBehaviour
 
     public void ResetGame()
     {
-        
-
+      
         for (int i = 0; i < manager_JoinPlayer.player.Length; i++)
         {
             manager_JoinPlayer.player[i].SetActive(true);
@@ -96,6 +141,7 @@ public class Manager_Score : MonoBehaviour
             manager_JoinPlayer.player[i].GetComponent<Player_Team>().ResetGame();
         }
         manager_JoinPlayer.ResetGame();
+        ActiveStart();
         activeReset = false;
     }
 }

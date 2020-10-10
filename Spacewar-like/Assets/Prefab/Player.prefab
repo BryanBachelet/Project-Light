@@ -9544,7 +9544,7 @@ GameObject:
   - component: {fileID: 6405058803588056683}
   - component: {fileID: -3632661705183286310}
   - component: {fileID: 4814573641297482725}
-  - component: {fileID: -1034118943587774874}
+  - component: {fileID: -5116284754532530318}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -9787,12 +9787,11 @@ MonoBehaviour:
   projectileShoot: {fileID: 8228626330783788490, guid: 611c2ec474b6cf64998c1bd8bb9c009e,
     type: 3}
   instantiatePos: {x: 0, y: 0, z: 0}
-  speedProjectile: 10
+  speedProjectile: 20
   projectileNumberAlive: 0
-  maxProjectileNumber: 3
-  lifetimeOfProjectile: 2
+  lifetimeOfProjectile: 3.19
   activeTir: 0
-  timeBtwShoot: 1
+  timeBtwShoot: 0.2
   timeEcouleShoot: 0
   addBullet: 0
 --- !u!114 &3305467229545962448
@@ -9889,67 +9888,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
---- !u!108 &-1034118943587774874
-Light:
+--- !u!114 &-5116284754532530318
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6094040997365583939}
-  m_Enabled: 0
-  serializedVersion: 10
-  m_Type: 2
-  m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 5.53
-  m_Range: 10
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-    m_CullingMatrixOverride:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingLayerMask: 1
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_UseBoundingSphereOverride: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b2bf62d3457814296dfe54dba561aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptListOne:
+  - {fileID: 3305467229545962448}
+  - {fileID: -6758926920608446068}
 --- !u!1 &6871606491804945641
 GameObject:
   m_ObjectHideFlags: 0

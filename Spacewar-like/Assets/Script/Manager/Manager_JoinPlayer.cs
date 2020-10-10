@@ -101,6 +101,8 @@ public class Manager_JoinPlayer : MonoBehaviour
     public void ResetGame()
     {
         player[0].transform.position = playerStartPos1.position;
+        player[0].transform.rotation = Quaternion.identity;
         player[1].transform.position = playerStartPos2.position;
+        player[1].transform.rotation = Quaternion.identity;
     }
 }
