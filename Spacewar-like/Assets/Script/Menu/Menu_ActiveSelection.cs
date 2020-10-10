@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
+using UnityEngine.Events;
 
 public class Menu_ActiveSelection : MonoBehaviour
 {
-    public Image test;
-    public Text text;
+    public GameObject root;
+    public MultiplayerEventSystem eventSystem;
 
+    public Image imagePlayer;
+    public Text press;
+
+    public PlayerInput player;
     public Menu_ScreenSelection screenSelection;
     public Vector2 inputAxis;
     public int index;
@@ -20,29 +26,30 @@ public class Menu_ActiveSelection : MonoBehaviour
 
     private void OnEnable()
     {
-       test.gameObject.SetActive(true);
+      
+       
     }
 
     private void OnDisable()
     {
-       test.gameObject.SetActive(false);
+        imagePlayer.gameObject.SetActive(false);
     }
 
     public void Update()
     {
-      
+
     }
 
     public void Ready(InputAction.CallbackContext ctx)
     {
-        if (this.enabled && screenSelection!= null)
+        if (this.enabled && screenSelection != null)
         {
-         
+
             if (!ready)
             {
                 screenSelection.SendReady();
                 ready = true;
-                text.gameObject.SetActive(false);
+                press.gameObject.SetActive(false);
             }
         }
     }
@@ -54,8 +61,20 @@ public class Menu_ActiveSelection : MonoBehaviour
         {
             screenSelection.SendUnready();
             ready = false;
-            text.gameObject.SetActive(true);
+            press.gameObject.SetActive(true);
         }
+    }
+
+
+    public void SetRoot(GameObject root)
+    {
+        this.root = root;
+        eventSystem.playerRoot = root;
+        Menu_SelectionInformation menu_SelectionInformation = this.root.GetComponent<Menu_SelectionInformation>();
+        imagePlayer = menu_SelectionInformation.playerImage;
+        press = menu_SelectionInformation.pressText;
+        screenSelection = menu_SelectionInformation.screenSelection;
+        imagePlayer.gameObject.SetActive(true);
     }
 
 
@@ -72,13 +91,13 @@ public class Menu_ActiveSelection : MonoBehaviour
                 {
 
                     index = IndexLoop(index, screenSelection.colors.Length, true);
-                    test.color = screenSelection.colors[index];
+                    imagePlayer.color = screenSelection.colors[index];
                 }
                 if (axis < -0.2f)
                 {
 
                     index = IndexLoop(index, screenSelection.colors.Length, false);
-                   test.color = screenSelection.colors[index];
+                    imagePlayer.color = screenSelection.colors[index];
 
                 }
                 resetInput = false;

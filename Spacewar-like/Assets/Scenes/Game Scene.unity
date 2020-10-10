@@ -672,11 +672,13 @@ MonoBehaviour:
     type: 3}
   player:
   - {fileID: 0}
+  - {fileID: 0}
   i: 0
   blackHole: {fileID: 0}
   blackHolePosition: {fileID: 0}
   playerStartPos1: {fileID: 2133152789}
   playerStartPos2: {fileID: 1169983253}
+  logMenu: 0
 --- !u!114 &1135754700
 MonoBehaviour:
   m_ObjectHideFlags: 0

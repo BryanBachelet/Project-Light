@@ -10,7 +10,7 @@ public class Menu_ScreenSelection : MonoBehaviour
     public int maxPlayerNumber;
     public int index;
 
-    public GameObject[] player =  new GameObject[4];
+    public GameObject[] player = new GameObject[4];
 
     public Color[] colors = new Color[3];
 
@@ -18,7 +18,7 @@ public class Menu_ScreenSelection : MonoBehaviour
 
     public int indexSceneGame;
 
-    public static Menu_ScreenSelection screenSelection ;
+    public static Menu_ScreenSelection screenSelection;
 
     private void Awake()
     {
@@ -28,22 +28,27 @@ public class Menu_ScreenSelection : MonoBehaviour
 
     void Update()
     {
-        if (Gamepad.current.xButton.wasPressedThisFrame)
+        if (Gamepad.current != null)
         {
-            if (CheckGamepad(Gamepad.current,Static_Variable.gamepad))
+            if (Gamepad.current.xButton.wasPressedThisFrame)
             {
-                if (index < maxPlayerNumber)
+                if (CheckGamepad(Gamepad.current, Static_Variable.gamepad))
                 {
-                    Static_Variable.gamepad[index] = Gamepad.current;
-                    ActivePlayer(index, 0, player[0]);
-                    ActivePlayer(index, 1, player[1]);
-                    index++;
+                    if (index < maxPlayerNumber)
+                    {
+                        Static_Variable.gamepad[index] = Gamepad.current;
 
+                        index++;
+
+                    }
                 }
             }
-            if(readyCheck == index && index>1)
+            if (Gamepad.current.aButton.wasPressedThisFrame)
             {
-                SceneManager.LoadScene(indexSceneGame);
+                if (readyCheck == index && index > 1)
+                {
+                    SceneManager.LoadScene(indexSceneGame);
+                }
             }
         }
     }
@@ -59,14 +64,7 @@ public class Menu_ScreenSelection : MonoBehaviour
     }
 
 
-    public void ActivePlayer(int index, int playernumber,GameObject player)
-    {
-        if (index == playernumber)
-        {
-            player.SetActive(true);
-            player.GetComponent<Menu_ActiveSelection>().enabled = true;
-        }
-    }
+
 
 
     public bool CheckGamepad(Gamepad current, Gamepad[] gamepad)
@@ -79,8 +77,8 @@ public class Menu_ScreenSelection : MonoBehaviour
                 check = false;
             }
         }
-       
-      
+
+
         return check;
 
     }
