@@ -39,16 +39,6 @@ public class Manager_Score : MonoBehaviour
         {
             SetScore();
         }
-        if(lastExplosion != null)
-        {
-            tempsEcouleExplosion += Time.deltaTime;
-            if(tempsEcouleExplosion > 2)
-            {
-                Destroy(lastExplosion);
-                lastExplosion = null;
-            }
-
-        }
         
     }
 
@@ -57,7 +47,6 @@ public class Manager_Score : MonoBehaviour
         lastExplosion = Instantiate(explosionParticles, player.transform.position, player.transform.rotation);
         player.GetComponent<Player_Team>().currentShip = Player_Team.ShipState.Die;
         
-        tempsEcouleExplosion = 0;
         //player.SetActive(false);
         activeReset = true;
     }

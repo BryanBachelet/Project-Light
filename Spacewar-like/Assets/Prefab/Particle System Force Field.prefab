@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7298775848405119210}
   - component: {fileID: 7298775848405119209}
+  - component: {fileID: 5802204840439167046}
   m_Layer: 0
   m_Name: Particle System Force Field
   m_TagString: Untagged
@@ -42,9 +43,9 @@ ParticleSystemForceField:
   m_Parameters:
     m_Shape: 0
     m_StartRange: 0
-    m_EndRange: 1
+    m_EndRange: 2.5
     m_Length: 1
-    m_GravityFocus: 0
+    m_GravityFocus: 1
     m_RotationRandomness: {x: 0, y: 0}
     m_DirectionCurveX:
       serializedVersion: 2
@@ -208,14 +209,14 @@ ParticleSystemForceField:
     m_GravityCurve:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 1.4
+      scalar: 2.37
       minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0
-          value: 0
+          time: -0.002269289
+          value: 0.04800272
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -223,26 +224,35 @@ ParticleSystemForceField:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.11262922
-          value: 0.3401729
-          inSlope: 1.8096592
-          outSlope: 1.8096592
+          time: 0.10348856
+          value: -0.9421387
+          inSlope: Infinity
+          outSlope: Infinity
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
-          outWeight: 0.31328166
+          outWeight: 0
         - serializedVersion: 3
-          time: 0.49776155
-          value: -1.3772725
-          inSlope: 0
-          outSlope: 0
+          time: 0.30494416
+          value: -12.572402
+          inSlope: Infinity
+          outSlope: Infinity
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.99295044
-          value: 0.042022705
+          time: 0.420041
+          value: 16.120113
+          inSlope: Infinity
+          outSlope: Infinity
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.5
+          value: -0.020599365
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -544,3 +554,15 @@ ParticleSystemForceField:
         m_RotationOrder: 4
     m_MultiplyDragByParticleSize: 1
     m_MultiplyDragByParticleVelocity: 1
+--- !u!114 &5802204840439167046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7298775848405119208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60dc1cfc74e15a74e9fa2a181a0661e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
