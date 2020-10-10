@@ -54,7 +54,7 @@ public class Manager_Score : MonoBehaviour
 
     public static void PlayerDeath(GameObject player)
     {
-        lastExplosion = Instantiate(explosionParticles, player.transform.position, player.transform.rotation);
+       // lastExplosion = Instantiate(explosionParticles, player.transform.position, player.transform.rotation);
         player.GetComponent<Player_Team>().currentShip = Player_Team.ShipState.Die;
         
         tempsEcouleExplosion = 0;
