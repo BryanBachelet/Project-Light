@@ -9,4 +9,5 @@ public class Menu_SelectionInformation : MonoBehaviour
     public Text pressText;
     public Image playerImage;
     public Menu_ScreenSelection screenSelection;
+    public Text profilName;
 }

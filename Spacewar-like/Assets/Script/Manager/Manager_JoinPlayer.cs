@@ -74,6 +74,7 @@ public class Manager_JoinPlayer : MonoBehaviour
     public void SetPlayerTeam(GameObject player, Color teamColor, Player_Team.ColorTeam colorTeam)
     {
         player.GetComponent<Player_Team>().team = colorTeam;
+        player.GetComponent<Player_Team>().indexPlayer = i;
         player.GetComponent<MeshRenderer>().material.color = teamColor;
         player.GetComponent<Player_MenuInput>().manager = manager;
     }

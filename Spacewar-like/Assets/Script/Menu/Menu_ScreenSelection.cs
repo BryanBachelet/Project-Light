@@ -18,6 +18,8 @@ public class Menu_ScreenSelection : MonoBehaviour
 
     public int indexSceneGame;
 
+    public string[] nameProfil = new string[53];
+
     public static Menu_ScreenSelection screenSelection;
 
     private void Awake()
@@ -32,16 +34,15 @@ public class Menu_ScreenSelection : MonoBehaviour
         {
             if (Gamepad.current.xButton.wasPressedThisFrame)
             {
-                if (CheckGamepad(Gamepad.current, Static_Variable.gamepad))
-                {
+             
                     if (index < maxPlayerNumber)
                     {
-                        Static_Variable.gamepad[index] = Gamepad.current;
+                       
 
                         index++;
 
                     }
-                }
+                
             }
             if (Gamepad.current.aButton.wasPressedThisFrame)
             {
@@ -56,6 +57,7 @@ public class Menu_ScreenSelection : MonoBehaviour
     public void SendReady()
     {
         readyCheck++;
+
     }
 
     public void SendUnready()
@@ -63,6 +65,19 @@ public class Menu_ScreenSelection : MonoBehaviour
         readyCheck--;
     }
 
+    public int CheckIndex(Gamepad gamepad)
+    {
+        int i = 0;
+        for (int j = 0; j < Static_Variable.gamepad.Length; j++)
+        {
+            if(gamepad== Static_Variable.gamepad[j])
+            {
+                i = j;
+            }
+        }
+
+        return i;
+    }
 
 
 

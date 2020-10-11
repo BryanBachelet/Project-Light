@@ -11,7 +11,10 @@ public class Menu_ActiveSelection : MonoBehaviour
     public GameObject root;
     public MultiplayerEventSystem eventSystem;
 
+    public int indexPlayer;
+
     public Image imagePlayer;
+    public Text profilname;
     public Text press;
 
     public PlayerInput player;
@@ -24,20 +27,12 @@ public class Menu_ActiveSelection : MonoBehaviour
     private float axisReset;
     private int frame;
 
-    private void OnEnable()
-    {
-      
-       
-    }
-
-    private void OnDisable()
-    {
-        //imagePlayer.gameObject.SetActive(false);
-    }
+   
 
     public void Update()
     {
-
+      //  indexPlayer = screenSelection.CheckIndex();
+       
     }
 
     public void Ready(InputAction.CallbackContext ctx)
@@ -50,6 +45,8 @@ public class Menu_ActiveSelection : MonoBehaviour
                 screenSelection.SendReady();
                 ready = true;
                 press.gameObject.SetActive(false);
+                Static_Variable.profilName[indexPlayer] = screenSelection.nameProfil[index];
+                Static_Variable.profilColor[indexPlayer] = screenSelection.colors[index];
             }
         }
     }
@@ -73,8 +70,11 @@ public class Menu_ActiveSelection : MonoBehaviour
         Menu_SelectionInformation menu_SelectionInformation = this.root.GetComponent<Menu_SelectionInformation>();
         imagePlayer = menu_SelectionInformation.playerImage;
         press = menu_SelectionInformation.pressText;
+        profilname = menu_SelectionInformation.profilName;
         screenSelection = menu_SelectionInformation.screenSelection;
         imagePlayer.gameObject.SetActive(true);
+        profilname.gameObject.SetActive(true);
+        profilname.text = screenSelection.nameProfil[index];
     }
 
 
@@ -90,14 +90,14 @@ public class Menu_ActiveSelection : MonoBehaviour
                 if (axis > 0.2f)
                 {
 
-                    index = IndexLoop(index, screenSelection.colors.Length, true);
-                    imagePlayer.color = screenSelection.colors[index];
+                    index = IndexLoop(index, screenSelection.nameProfil.Length, true);
+                    profilname.text = screenSelection.nameProfil[index];
                 }
                 if (axis < -0.2f)
                 {
 
-                    index = IndexLoop(index, screenSelection.colors.Length, false);
-                    imagePlayer.color = screenSelection.colors[index];
+                    index = IndexLoop(index, screenSelection.nameProfil.Length, false);
+                    profilname.text = screenSelection.nameProfil[index];
 
                 }
                 resetInput = false;

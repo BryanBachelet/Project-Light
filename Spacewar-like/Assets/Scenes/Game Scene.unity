@@ -521,8 +521,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14, y: -334}
-  m_SizeDelta: {x: 297.82104, y: 119.58972}
+  m_AnchoredPosition: {x: 10.701, y: -334}
+  m_SizeDelta: {x: 347.22314, y: 119.58972}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &419546852
 MonoBehaviour:
@@ -630,7 +630,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &430520864
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1131,10 +1131,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 72
+    m_FontSize: 65
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 6
     m_MaxSize: 118
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1415,10 +1415,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 72
+    m_FontSize: 65
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 6
     m_MaxSize: 118
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1426,7 +1426,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Rejouer
+  m_Text: Reprendre
 --- !u!222 &1107845830
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1493,10 +1493,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 72
+    m_FontSize: 65
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 6
     m_MaxSize: 118
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1745,9 +1745,9 @@ MonoBehaviour:
   firstButton: {fileID: 262289464}
   root: {fileID: 459432265}
   eventSystem: {fileID: 1133276392}
-  pauseGo: {fileID: 0}
-  buttonPause: {fileID: 0}
-  rootPause: {fileID: 0}
+  pauseGo: {fileID: 430520863}
+  buttonPause: {fileID: 1515414170}
+  rootPause: {fileID: 430520863}
   scoreBlueUi: {fileID: 281985404}
   scoreRedUi: {fileID: 1445655622}
   prefabExplosion: {fileID: 7298775848405119208, guid: 97e7e5d5faaa4634ca348e56fbb0c9cc,
@@ -2048,8 +2048,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14, y: 24.200073}
-  m_SizeDelta: {x: 297.82104, y: 119.58972}
+  m_AnchoredPosition: {x: 10.7, y: 27.1}
+  m_SizeDelta: {x: 347.22534, y: 113.87637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1515414172
 MonoBehaviour:
@@ -2406,8 +2406,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14, y: -145}
-  m_SizeDelta: {x: 297.82104, y: 119.58972}
+  m_AnchoredPosition: {x: 10.701, y: -145}
+  m_SizeDelta: {x: 347.22314, y: 119.58972}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1949450781
 MonoBehaviour:

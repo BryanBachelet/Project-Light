@@ -32,8 +32,9 @@ public class Menu_PlayerInput : MonoBehaviour
         {
             if (Gamepad.current.aButton.wasPressedThisFrame)
             {
-                if (CheckGamepad(Gamepad.current))
+                if (CheckGamepad(Gamepad.current) && CheckGamepad(Gamepad.current, Static_Variable.gamepad))
                 {
+                    Static_Variable.gamepad[i] = Gamepad.current;
                     gamepad[i] = Gamepad.current;
 
                     InstantiatePlayer();
@@ -75,8 +76,23 @@ public class Menu_PlayerInput : MonoBehaviour
         player[i] = inputManager.JoinPlayer(i, 0, "Gamepad", gamepad[i]).gameObject;
         Menu_ActiveSelection menu_Active = player[i].GetComponent<Menu_ActiveSelection>();
         menu_Active.SetRoot(root[i]);
-
-
+        menu_Active.indexPlayer = i;
         i++;
     }
+    public bool CheckGamepad(Gamepad current, Gamepad[] gamepad)
+    {
+        bool check = true;
+        for (int i = 0; i < gamepad.Length; i++)
+        {
+            if (current == gamepad[i])
+            {
+                check = false;
+            }
+        }
+
+
+        return check;
+
+    }
 }
+

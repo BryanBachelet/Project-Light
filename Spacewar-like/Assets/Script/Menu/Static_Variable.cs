@@ -7,6 +7,8 @@ public class Static_Variable : MonoBehaviour
 {
     public static GameObject[] player = new GameObject[2];
     public static Gamepad[] gamepad =  new Gamepad[2];
+    public static string[] profilName = new string[2];
+    public static Color[] profilColor = new Color[2];
 
     public static void ResetVariable(int playerNumber)
     {

@@ -10,6 +10,9 @@ public class Player_Team : MonoBehaviour
     public enum ShipState {Any, Alive, Die};
     public ShipState currentShip = ShipState.Any;
 
+    public int indexPlayer;
+    public string playerProfil;
+
     private Player_Mouvement player_Mouvement;
     private Player_Shoot player_Shoot;
 
@@ -17,6 +20,7 @@ public class Player_Team : MonoBehaviour
     {
         player_Mouvement = GetComponent<Player_Mouvement>();
         player_Shoot = GetComponent<Player_Shoot>();
+        playerProfil = Static_Variable.profilName[indexPlayer];
     }
 
 
