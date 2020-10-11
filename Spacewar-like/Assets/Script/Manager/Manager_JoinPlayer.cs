@@ -22,6 +22,7 @@ public class Manager_JoinPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        gamepad = new Gamepad[Static_Variable.gamepad.Length];
         InstantiateBlackHole();
         if (Static_Variable.player.Length > 1)
         {

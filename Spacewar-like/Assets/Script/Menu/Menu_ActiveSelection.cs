@@ -32,7 +32,7 @@ public class Menu_ActiveSelection : MonoBehaviour
 
     private void OnDisable()
     {
-        imagePlayer.gameObject.SetActive(false);
+        //imagePlayer.gameObject.SetActive(false);
     }
 
     public void Update()
