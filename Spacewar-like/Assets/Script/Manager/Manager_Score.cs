@@ -15,6 +15,10 @@ public class Manager_Score : MonoBehaviour
     public int blueScore = 0;
     public int redScore = 0;
 
+    [Header("GamePhase")]
+    public float timerOfDeath = 1;
+    private float countdownOfDeath;
+
     [Header("Start Phase")]
     public float startPhasetimer;
     public Text timer;
@@ -78,7 +82,15 @@ public class Manager_Score : MonoBehaviour
 
         if (activeReset)
         {
-            SetScore();
+            if (countdownOfDeath > timerOfDeath)
+            {
+                SetScore();
+                countdownOfDeath = 0;
+            }
+            else
+            {
+                countdownOfDeath += Time.deltaTime;
+            }
         }
         if (lastExplosion != null)
         {
