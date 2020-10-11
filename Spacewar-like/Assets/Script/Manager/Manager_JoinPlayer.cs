@@ -16,24 +16,39 @@ public class Manager_JoinPlayer : MonoBehaviour
 
     public Transform playerStartPos1;
     public Transform playerStartPos2;
+    public bool logMenu =false;
+
 
     // Start is called before the first frame update
     void Awake()
     {
-        //InstantiateBlackHole();
+        gamepad = new Gamepad[Static_Variable.gamepad.Length];
+        InstantiateBlackHole();
+        if (Static_Variable.player.Length > 1)
+        {
+            logMenu = true;
+            for (int j = 0; j < Static_Variable.gamepad.Length; j++)
+            {
+                gamepad[i] = Static_Variable.gamepad[i];
+                InstantiatePlayer();
+            }
+        }
     }
 
     public void Update()
     {
-        if (Gamepad.current.aButton.wasPressedThisFrame)
+        if (Gamepad.current != null && !logMenu)
         {
-            if (CheckGamepad(Gamepad.current))
+            if (Gamepad.current.aButton.wasPressedThisFrame)
             {
-                gamepad[i] = Gamepad.current;
-                Debug.Log(gamepad[i]);
-                InstantiatePlayer();
-            }
+                if (CheckGamepad(Gamepad.current))
+                {
+                    gamepad[i] = Gamepad.current;
+                    Debug.Log(gamepad[i]);
+                    InstantiatePlayer();
+                }
 
+            }
         }
     }
 
@@ -80,13 +95,15 @@ public class Manager_JoinPlayer : MonoBehaviour
         GameObject blackHoleInstante = Instantiate(blackHole, blackHolePosition.position, Quaternion.identity);
         BlackHole_Behavior blackhole = blackHoleInstante.GetComponent<BlackHole_Behavior>();
         blackhole.player = player;
-        blackhole.manager = this;
+        
 
     }
 
     public void ResetGame()
     {
         player[0].transform.position = playerStartPos1.position;
-        //player[1].transform.position = playerStartPos2.position;
+        player[0].transform.rotation = Quaternion.identity;
+        player[1].transform.position = playerStartPos2.position;
+        player[1].transform.rotation = Quaternion.identity;
     }
 }

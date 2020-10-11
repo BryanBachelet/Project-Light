@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Menu_Fonction : MonoBehaviour
 {
@@ -55,6 +56,11 @@ public class Menu_Fonction : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void ChangeScene(int i)
+    {
+        SceneManager.LoadScene(i);
     }
 
 

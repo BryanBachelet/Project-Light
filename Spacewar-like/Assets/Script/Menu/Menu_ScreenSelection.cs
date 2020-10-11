@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 
 public class Menu_ScreenSelection : MonoBehaviour
@@ -9,38 +10,61 @@ public class Menu_ScreenSelection : MonoBehaviour
     public int maxPlayerNumber;
     public int index;
 
-    public GameObject[] player =  new GameObject[4];
+    public GameObject[] player = new GameObject[4];
 
     public Color[] colors = new Color[3];
+
+    public int readyCheck;
+
+    public int indexSceneGame;
+
+    public static Menu_ScreenSelection screenSelection;
+
+    private void Awake()
+    {
+        screenSelection = this;
+    }
 
 
     void Update()
     {
-        if (Gamepad.current.aButton.wasPressedThisFrame)
+        if (Gamepad.current != null)
         {
-            if (CheckGamepad(Gamepad.current,Static_Variable.gamepad))
+            if (Gamepad.current.xButton.wasPressedThisFrame)
             {
-                if (index < maxPlayerNumber)
+                if (CheckGamepad(Gamepad.current, Static_Variable.gamepad))
                 {
-                    Static_Variable.gamepad[index] = Gamepad.current;
-                    ActivePlayer(index, 0, player[0]);
-                    ActivePlayer(index, 1, player[1]);
-                    index++;
+                    if (index < maxPlayerNumber)
+                    {
+                        Static_Variable.gamepad[index] = Gamepad.current;
 
+                        index++;
+
+                    }
+                }
+            }
+            if (Gamepad.current.aButton.wasPressedThisFrame)
+            {
+                if (readyCheck == index && index > 1)
+                {
+                    SceneManager.LoadScene(indexSceneGame);
                 }
             }
         }
     }
 
-
-    public void ActivePlayer(int index, int playernumber,GameObject player)
+    public void SendReady()
     {
-        if (index == playernumber)
-        {
-            player.SetActive(true);
-            player.GetComponent<Menu_ActiveSelection>().enabled = true;
-        }
+        readyCheck++;
     }
+
+    public void SendUnready()
+    {
+        readyCheck--;
+    }
+
+
+
 
 
     public bool CheckGamepad(Gamepad current, Gamepad[] gamepad)
@@ -53,8 +77,8 @@ public class Menu_ScreenSelection : MonoBehaviour
                 check = false;
             }
         }
-       
-      
+
+
         return check;
 
     }

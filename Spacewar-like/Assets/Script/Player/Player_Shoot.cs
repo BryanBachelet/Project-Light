@@ -10,7 +10,7 @@ public class Player_Shoot : MonoBehaviour
     public Vector3 instantiatePos;
     public float speedProjectile;
     public int projectileNumberAlive;
-    public int maxProjectileNumber;
+ //   public int maxProjectileNumber;
     public float lifetimeOfProjectile;
 
     private List<GameObject> projectileAlive =  new List<GameObject>();
@@ -27,20 +27,21 @@ public class Player_Shoot : MonoBehaviour
 
             if(timeEcouleShoot >= timeBtwShoot)
             {
-                AddShot();
-                if(addBullet)
-                {
-                    addBullet = false;
-                    activeTir = false;
+                activeTir = false;
+                //AddShot();
+                //if(addBullet)
+                //{
+                //    addBullet = false;
+                //    activeTir = false;
 
-                }
+                //}
 
-                if(activeTir)
-                {
-                    addBullet = true;
-                }
+                //if(activeTir)
+                //{
+                //    addBullet = true;
+                //}
 
-                timeEcouleShoot = 0;
+                //timeEcouleShoot = 0;
 
             }
             else
@@ -52,24 +53,29 @@ public class Player_Shoot : MonoBehaviour
     }
     public void Shoot(InputAction.CallbackContext ctx)
     {
-        if (projectileNumberAlive < maxProjectileNumber && ctx.performed)
+        if ( this.enabled == true && ctx.performed)
         {
-            if (!activeTir)
+            //if (!activeTir)
+            //{
+            //    if(!addBullet)
+            //    {
+            //        activeTir = true;
+            //        return;
+            //    }
+            //    timeEcouleShoot = timeBtwShoot;
+            //    return;
+            //}
+            //else
+            //{
+            //    if(addBullet)
+            //    {
+            //        return;
+            //    }
+            //}
+
+            if (activeTir)
             {
-                if(!addBullet)
-                {
-                    activeTir = true;
-                    return;
-                }
-                timeEcouleShoot = timeBtwShoot;
                 return;
-            }
-            else
-            {
-                if(addBullet)
-                {
-                    return;
-                }
             }
             GameObject bullet = Instantiate(projectileShoot, transform.position + instantiatePos, Quaternion.identity);
             Projectile_Behavior currentProjectile = bullet.GetComponent<Projectile_Behavior>();
@@ -80,9 +86,10 @@ public class Player_Shoot : MonoBehaviour
             currentProjectile.direction = transform.forward;
             projectileAlive.Add(bullet);
             Debug.Log(activeTir);
-
+            AddShot();
 
             activeTir = true;
+            timeEcouleShoot = 0;
 
             Debug.Log(activeTir);
 
