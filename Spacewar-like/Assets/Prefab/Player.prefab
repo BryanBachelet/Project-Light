@@ -9545,6 +9545,7 @@ GameObject:
   - component: {fileID: -3632661705183286310}
   - component: {fileID: 4814573641297482725}
   - component: {fileID: -5116284754532530318}
+  - component: {fileID: 2483818892067782880}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -9624,11 +9625,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6094040997365583939}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 3.0426836}
+  m_Center: {x: 0, y: 0, z: -0.18198204}
 --- !u!114 &6094040997365583996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9767,6 +9768,21 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: b98548aa-7d4c-4b91-99fb-308d951dd9a5
     m_ActionName: UI/Validate[/XInputControllerWindows/buttonWest,/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2483818892067782880}
+        m_MethodName: InputMenu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5e4a555f-0763-4cd5-baf9-5a6457ebf9c7
+    m_ActionName: Player/Pause Menu[/XInputControllerWindows/start,/XInputControllerWindows/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
@@ -9903,6 +9919,20 @@ MonoBehaviour:
   scriptListOne:
   - {fileID: 3305467229545962448}
   - {fileID: -6758926920608446068}
+  test: 0
+--- !u!114 &2483818892067782880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6094040997365583939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c11b6f0857cfc840a7f3f58ade11c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
 --- !u!1 &6871606491804945641
 GameObject:
   m_ObjectHideFlags: 0
@@ -9961,8 +9991,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6900949405362314810}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.064, y: 0.086, z: 0.875}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1.0000005}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1.0000005}
   m_Children: []
   m_Father: {fileID: 6094040997365583999}
   m_RootOrder: 0
@@ -9974,7 +10004,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6900949405362314810}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -2432090755550338912, guid: a3b54638867bc1e4096f3b944a6c1e31, type: 3}
 --- !u!23 &6693133957640655455
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9993,7 +10023,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d42f7b44f07cacb45944240f0e008b1f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class Manager_JoinPlayer : MonoBehaviour
 {
     public PlayerInputManager inputManager;
+    private Manager_Score manager;
     public GameObject playerPrefab;
     public GameObject[] player;
     public Gamepad[] gamepad = new Gamepad[2];
@@ -23,6 +24,7 @@ public class Manager_JoinPlayer : MonoBehaviour
     void Awake()
     {
         gamepad = new Gamepad[Static_Variable.gamepad.Length];
+        manager = GetComponent<Manager_Score>();
         InstantiateBlackHole();
         if (Static_Variable.player.Length > 1)
         {
@@ -73,6 +75,7 @@ public class Manager_JoinPlayer : MonoBehaviour
     {
         player.GetComponent<Player_Team>().team = colorTeam;
         player.GetComponent<MeshRenderer>().material.color = teamColor;
+        player.GetComponent<Player_MenuInput>().manager = manager;
     }
 
     public bool CheckGamepad(Gamepad current)

@@ -30,6 +30,10 @@ public class Manager_Score : MonoBehaviour
     public MultiplayerEventSystem eventSystem;
 
     [Header("Pause Phase")]
+    public GameObject pauseGo;
+    public GameObject buttonPause;
+    public GameObject rootPause;
+  
 
     private float countStartPhase;
 
@@ -65,7 +69,7 @@ public class Manager_Score : MonoBehaviour
 
             if (countStartPhase > startPhasetimer)
             {
-                ActiveGame();
+                ChangeState(StateOfGame.Game);
             }
             countStartPhase += Time.deltaTime;
         }
@@ -78,18 +82,20 @@ public class Manager_Score : MonoBehaviour
         {
 
         }
-
-
-        if (activeReset)
+        if (gameState == StateOfGame.Game)
         {
-            if (countdownOfDeath > timerOfDeath)
+
+            if (activeReset)
             {
-                SetScore();
-                countdownOfDeath = 0;
-            }
-            else
-            {
-                countdownOfDeath += Time.deltaTime;
+                if (countdownOfDeath > timerOfDeath)
+                {
+                    SetScore();
+                    countdownOfDeath = 0;
+                }
+                else
+                {
+                    countdownOfDeath += Time.deltaTime;
+                }
             }
         }
         if (lastExplosion != null)
@@ -110,6 +116,7 @@ public class Manager_Score : MonoBehaviour
         DeactivePlayer(true);
         timer.enabled = false;
         finishGo.SetActive(false);
+        pauseGo.SetActive(false);
     }
 
     public void ActiveStart()
@@ -130,9 +137,14 @@ public class Manager_Score : MonoBehaviour
         DeactivePlayer(false);
     }
 
-    public void ActivePause(InputAction.CallbackContext ctx)
+    public void ActivePause()
     {
-
+        finishGo.SetActive(false);
+        pauseGo.SetActive(true);
+        eventSystem.firstSelectedGameObject = buttonPause;
+        eventSystem.SetSelectedGameObject(buttonPause);
+        eventSystem.playerRoot = rootPause;
+        DeactivePlayer(false);
     }
 
 
@@ -174,6 +186,7 @@ public class Manager_Score : MonoBehaviour
     {
         // lastExplosion = Instantiate(explosionParticles, player.transform.position, player.transform.rotation);
         player.GetComponent<Player_Team>().currentShip = Player_Team.ShipState.Die;
+        player.SetActive(false);
 
         tempsEcouleExplosion = 0;
         activeReset = true;
