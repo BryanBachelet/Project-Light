@@ -21,10 +21,12 @@ public class Player_Mouvement : MonoBehaviour
     private float _rightAxis;
 
     private float factorAcceleration = 0;
-    private float timerAcceleration = 0;
+    public float timerAcceleration = 0;
 
     public ParticleSystem reactor1;
     public ParticleSystem reactor2;
+    public ParticleSystem Fire1;
+    public ParticleSystem Fire2;
     public ParticleSystem.ShapeModule reactor1Shape;
     public ParticleSystem.ShapeModule reactor2Shape;
     // Start is called before the first frame update
@@ -60,9 +62,11 @@ public class Player_Mouvement : MonoBehaviour
     {
         Debug.Log(_triggerAxis);
         reactor1.startLifetime = _triggerAxis * 20;
-        reactor1Shape.angle = 0.07f + 10f * speedOfMouvement.Evaluate(timerAcceleration);
+        reactor1Shape.angle = 0.07f + (100f * speedOfMouvement.Evaluate(timerAcceleration));
+        Fire1.startSpeed = (speedOfMouvement.Evaluate(timerAcceleration) * _triggerAxis) / 8;
         reactor2.startLifetime = _triggerAxis * 20;
-        reactor2Shape.angle = 0.07f + 10f * speedOfMouvement.Evaluate(timerAcceleration);
+        reactor2Shape.angle = 0.07f + (100f * speedOfMouvement.Evaluate(timerAcceleration));
+        Fire2.startSpeed = (speedOfMouvement.Evaluate(timerAcceleration) * _triggerAxis) / 8;
         Vector3 direction = transform.forward * _triggerAxis;
         rigid_Player.AddForce(direction.normalized * speedOfMouvement.Evaluate(timerAcceleration), ForceMode.Acceleration);
     }
@@ -89,7 +93,7 @@ public class Player_Mouvement : MonoBehaviour
         {
             timerAcceleration += Time.deltaTime * factorAcceleration;
         }
-        else if(factorAcceleration == 0)
+        else if(factorAcceleration <= 0)
         {
             timerAcceleration = 0;
         }
