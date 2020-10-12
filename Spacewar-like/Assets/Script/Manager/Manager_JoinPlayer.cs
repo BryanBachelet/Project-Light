@@ -99,6 +99,7 @@ public class Manager_JoinPlayer : MonoBehaviour
         GameObject blackHoleInstante = Instantiate(blackHole, blackHolePosition.position, Quaternion.identity);
         BlackHole_Behavior blackhole = blackHoleInstante.GetComponent<BlackHole_Behavior>();
         blackhole.player = player;
+        blackhole.manager = manager;
         
 
     }

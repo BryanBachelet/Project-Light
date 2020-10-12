@@ -10,9 +10,14 @@ public class Static_Variable : MonoBehaviour
     public static string[] profilName = new string[2];
     public static Color[] profilColor = new Color[2];
 
+    public static int winPoint;
+
+
     public static void ResetVariable(int playerNumber)
     {
         player = new GameObject[playerNumber];
         gamepad = new Gamepad[playerNumber];
+        profilName = new string[playerNumber];
+        profilColor = new Color[playerNumber];
     }
 }

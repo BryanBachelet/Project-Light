@@ -10,10 +10,14 @@ public class BlackHole_Behavior : MonoBehaviour
     public float maxforce = 10f;
     public float minForce = 3f;
 
+    public Manager_Score manager;
 
     void Update()
     {
-        BlackHoleAttraction();
+        if (manager.gameState == Manager_Score.StateOfGame.Game)
+        {
+            BlackHoleAttraction();
+        }
     }
 
     private void OnDrawGizmos()

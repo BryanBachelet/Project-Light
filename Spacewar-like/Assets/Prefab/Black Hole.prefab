@@ -42,7 +42,7 @@ ParticleSystemForceField:
   m_Parameters:
     m_Shape: 0
     m_StartRange: 0
-    m_EndRange: 10
+    m_EndRange: 30
     m_Length: 1
     m_GravityFocus: 0
     m_RotationRandomness: {x: 0, y: 0}
@@ -208,7 +208,7 @@ ParticleSystemForceField:
     m_GravityCurve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.01
+      scalar: 0.15
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -572,8 +572,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: []
-  distance: 10
-  force: 5
+  distance: 15
+  maxforce: 10
+  minForce: 3
+  manager: {fileID: 0}
 --- !u!135 &8250556568345611960
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -585,5 +587,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}

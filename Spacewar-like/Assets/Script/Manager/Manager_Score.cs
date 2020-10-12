@@ -33,7 +33,7 @@ public class Manager_Score : MonoBehaviour
     public GameObject pauseGo;
     public GameObject buttonPause;
     public GameObject rootPause;
-  
+
 
     private float countStartPhase;
 
@@ -56,7 +56,14 @@ public class Manager_Score : MonoBehaviour
             explosionParticles = prefabExplosion;
         }
         manager_JoinPlayer = GetComponent<Manager_JoinPlayer>();
-
+        if (Static_Variable.winPoint > 0 && Static_Variable.winPoint < 8)
+        {
+            winPoint = Static_Variable.winPoint;
+        }
+        else
+        {
+            winPoint = 3;
+        }
         ChangeState(StateOfGame.Start);
 
     }
