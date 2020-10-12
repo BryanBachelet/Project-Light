@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366757, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 2109b81f04aed154688c2930f06e8661,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -1750,7 +1751,7 @@ MonoBehaviour:
   rootPause: {fileID: 430520863}
   scoreBlueUi: {fileID: 281985404}
   scoreRedUi: {fileID: 1445655622}
-  prefabExplosion: {fileID: 7298775848405119208, guid: 97e7e5d5faaa4634ca348e56fbb0c9cc,
+  prefabExplosion: {fileID: 1329845292236604, guid: 9bba9cf244c53c5439505dfc96fdd11c,
     type: 3}
 --- !u!114 &1135754701
 MonoBehaviour:
