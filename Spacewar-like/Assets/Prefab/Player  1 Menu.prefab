@@ -144,6 +144,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3548597341519646880}
+        m_MethodName: ReturnMenu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 2338059c-cf23-4b7e-860d-80123c4f1d0b
     m_ActionName: UI/Return[/XInputControllerWindows/buttonEast]
   - m_PersistentCalls:
@@ -161,6 +172,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b98548aa-7d4c-4b91-99fb-308d951dd9a5
     m_ActionName: UI/Validate[/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5e4a555f-0763-4cd5-baf9-5a6457ebf9c7
+    m_ActionName: Player/Pause Menu[/XInputControllerWindows/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: UI
@@ -180,8 +195,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   root: {fileID: 0}
   eventSystem: {fileID: 8667813853766081745}
+  indexPlayer: 0
   imagePlayer: {fileID: 0}
+  profilname: {fileID: 0}
   press: {fileID: 0}
+  playerInput: {fileID: 0}
   player: {fileID: 3548597341519646887}
   screenSelection: {fileID: 0}
   inputAxis: {x: 0, y: 0}

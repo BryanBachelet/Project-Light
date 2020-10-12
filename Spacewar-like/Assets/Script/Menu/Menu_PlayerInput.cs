@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
+
 
 public class Menu_PlayerInput : MonoBehaviour
 {
@@ -13,6 +15,13 @@ public class Menu_PlayerInput : MonoBehaviour
     public GameObject MenuPlayer;
 
     public GameObject[] root;
+    public GameObject gameSelection;
+    public GameObject selectButton;
+    public GameObject Rroot;
+
+    public GameObject Selection;
+    public MultiplayerEventSystem system ;
+
 
     public int i;
 
@@ -48,6 +57,31 @@ public class Menu_PlayerInput : MonoBehaviour
     {
         isSelection = true;
         MenuPlayer.SetActive(false);
+        for (int i = 0; i < player.Length; i++)
+        {
+            if (player[i] != null)
+            {
+                player[i].SetActive(true);
+            }
+        }
+    }
+
+    public void ReturnGameMode()
+    {
+        isSelection = false;
+        MenuPlayer.SetActive(true);
+        gameSelection.SetActive(true);
+        Selection.SetActive(false);
+        system.playerRoot = Rroot;
+        system.SetSelectedGameObject(selectButton);
+        system.firstSelectedGameObject = selectButton;
+        for (int i = 0; i < player.Length; i++)
+        {
+            if (player[i] != null)
+            {
+                player[i].SetActive(false);
+            }
+        }
     }
 
     public bool CheckGamepad(Gamepad current)
@@ -68,6 +102,7 @@ public class Menu_PlayerInput : MonoBehaviour
     public void InstantiateFirstPlayer()
     {
         MenuPlayer = inputManager.JoinPlayer(i, 0, "Gamepad", Gamepad.current).gameObject;
+        system = MenuPlayer.GetComponent<MultiplayerEventSystem>();
     }
 
     public void InstantiatePlayer()
@@ -77,8 +112,10 @@ public class Menu_PlayerInput : MonoBehaviour
         Menu_ActiveSelection menu_Active = player[i].GetComponent<Menu_ActiveSelection>();
         menu_Active.SetRoot(root[i]);
         menu_Active.indexPlayer = i;
+        menu_Active.playerInput = this;
         i++;
     }
+
     public bool CheckGamepad(Gamepad current, Gamepad[] gamepad)
     {
         bool check = true;

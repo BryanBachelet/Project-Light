@@ -13,6 +13,8 @@ public class Menu_Fonction : MonoBehaviour
     public GameObject previousScreen;
     public GameObject currentScreen;
 
+    public GameObject returnGameSelection;
+
     public void ActiveButton(GameObject active)
     {
         active.SetActive(true);
@@ -61,6 +63,13 @@ public class Menu_Fonction : MonoBehaviour
     public void ChangeScene(int i)
     {
         SceneManager.LoadScene(i);
+    }
+
+    public void Reset(GameObject returnGO)
+    {
+        returnGO.SetActive(true);
+        returnGameSelection.SetActive(false);
+        SelectItem(returnGO.transform.GetChild(0).gameObject);
     }
 
 

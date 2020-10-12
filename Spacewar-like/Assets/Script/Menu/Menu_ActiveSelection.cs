@@ -17,6 +17,7 @@ public class Menu_ActiveSelection : MonoBehaviour
     public Text profilname;
     public Text press;
 
+    public Menu_PlayerInput playerInput;
     public PlayerInput player;
     public Menu_ScreenSelection screenSelection;
     public Vector2 inputAxis;
@@ -51,6 +52,13 @@ public class Menu_ActiveSelection : MonoBehaviour
         }
     }
 
+    public void ReturnMenu(InputAction.CallbackContext ctx)
+    {
+        if (!ready)
+        {
+            playerInput.ReturnGameMode();
+        }
+    }
 
     public void Unready(InputAction.CallbackContext ctx)
     {
