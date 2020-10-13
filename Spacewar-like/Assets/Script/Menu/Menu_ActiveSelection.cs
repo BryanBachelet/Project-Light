@@ -50,6 +50,7 @@ public class Menu_ActiveSelection : MonoBehaviour
                 pressX.SetActive(false);
                 Static_Variable.profilName[indexPlayer] = screenSelection.nameProfil[index];
                 Static_Variable.profilColor[indexPlayer] = screenSelection.colors[index];
+               
             }
         }
     }
@@ -88,6 +89,7 @@ public class Menu_ActiveSelection : MonoBehaviour
         pressX = menu_SelectionInformation.presButtoN;
         pressX.SetActive(true);
         profilname.text = screenSelection.nameProfil[index];
+        imagePlayer.sprite = screenSelection.sprites[index];
     }
 
 
@@ -105,12 +107,14 @@ public class Menu_ActiveSelection : MonoBehaviour
 
                     index = IndexLoop(index, screenSelection.nameProfil.Length, true);
                     profilname.text = screenSelection.nameProfil[index];
+                    imagePlayer.sprite = screenSelection.sprites[index];
                 }
                 if (axis < -0.2f)
                 {
 
                     index = IndexLoop(index, screenSelection.nameProfil.Length, false);
                     profilname.text = screenSelection.nameProfil[index];
+                    imagePlayer.sprite = screenSelection.sprites[index];
 
                 }
                 resetInput = false;

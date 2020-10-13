@@ -19,6 +19,7 @@ public class Menu_ScreenSelection : MonoBehaviour
     public int indexSceneGame;
 
     public string[] nameProfil = new string[53];
+    public Sprite[] sprites = new Sprite[55];
 
     public static Menu_ScreenSelection screenSelection;
     public GameObject screanControl;
