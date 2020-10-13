@@ -21,6 +21,9 @@ public class Menu_ScreenSelection : MonoBehaviour
     public string[] nameProfil = new string[53];
 
     public static Menu_ScreenSelection screenSelection;
+    public GameObject screanControl;
+    public GameObject Selection;
+    public GameObject PressALaunch;
 
     private void Awake()
     {
@@ -34,23 +37,28 @@ public class Menu_ScreenSelection : MonoBehaviour
         {
             if (Gamepad.current.xButton.wasPressedThisFrame)
             {
-             
-                    if (index < maxPlayerNumber)
-                    {
-                       
 
-                        index++;
+                if (index < maxPlayerNumber)
+                {
 
-                    }
-                
+
+                    index++;
+
+                }
+
             }
             if (Gamepad.current.aButton.wasPressedThisFrame)
             {
                 if (readyCheck == index && index > 1)
                 {
-                    SceneManager.LoadScene(indexSceneGame);
+                    screanControl.SetActive(true);
+                    Selection.SetActive(false);
                 }
             }
+        }
+        if (readyCheck == index && index > 1)
+        {
+            PressALaunch.SetActive(true);
         }
     }
 

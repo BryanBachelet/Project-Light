@@ -10,6 +10,7 @@ public class BlackHole_Behavior : MonoBehaviour
     public float maxforce = 10f;
     public float minForce = 3f;
 
+   
     public Manager_Score manager;
 
     void Update()

@@ -9577,7 +9577,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6094040997365583939}
-  m_Mesh: {fileID: -2432090755550338912, guid: a3b54638867bc1e4096f3b944a6c1e31, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: b0a198d1a565b6341a8013cbf483e1ef, type: 3}
 --- !u!23 &6094040997365583937
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9597,6 +9597,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: d42f7b44f07cacb45944240f0e008b1f, type: 2}
+  - {fileID: 2100000, guid: ca925edec8686574b9f9656ea227fe93, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9859,8 +9860,11 @@ MonoBehaviour:
   speedOfRotation: 180
   currentSpeed: 0
   activeControl: 1
+  timerAcceleration: 0
   reactor1: {fileID: 8169949605117241484}
   reactor2: {fileID: 4452221859658116501}
+  Fire1: {fileID: 0}
+  Fire2: {fileID: 0}
 --- !u!54 &6405058803588056683
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9891,6 +9895,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 0
   currentShip: 0
+  indexPlayer: 0
+  playerProfil: 
 --- !u!114 &4814573641297482725
 MonoBehaviour:
   m_ObjectHideFlags: 0
