@@ -192,9 +192,11 @@ public class Manager_Score : MonoBehaviour
     public static void PlayerDeath(GameObject player)
     {
         Destroy(lastExplosion);
-        lastExplosion = Instantiate(explosionParticles, player.transform.position, player.transform.rotation);
+        Manager_JoinPlayer.blackHoleInstante.GetComponentInChildren<ParticleSystemForceField>().gravity = -5f;
+        //lastExplosion = Instantiate(explosionParticles, player.transform.position, player.transform.rotation);
         player.GetComponent<Player_Team>().currentShip = Player_Team.ShipState.Die;
-        player.SetActive(false);
+        player.GetComponent<MeshRenderer>().enabled = false;
+        //player.SetActive(false);
 
         tempsEcouleExplosion = 0;
         activeReset = true;

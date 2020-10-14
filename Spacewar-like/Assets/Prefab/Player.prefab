@@ -9837,20 +9837,20 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.2757977
       value: 20
-      inSlope: -8.56055
-      outSlope: -8.56055
+      inSlope: -2.381358
+      outSlope: -2.381358
       tangentMode: 0
       weightedMode: 0
       inWeight: 1
-      outWeight: 0.33333334
+      outWeight: 0.13252214
     - serializedVersion: 3
-      time: 5.370879
-      value: 6.9319153
-      inSlope: -2.5648432
-      outSlope: -2.5648432
-      tangentMode: 34
+      time: 5.3516045
+      value: 10
+      inSlope: -0.23578766
+      outSlope: -0.23578766
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0.055267587
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -9859,8 +9859,11 @@ MonoBehaviour:
   speedOfRotation: 180
   currentSpeed: 0
   activeControl: 1
+  timerAcceleration: 0
   reactor1: {fileID: 8169949605117241484}
   reactor2: {fileID: 4452221859658116501}
+  Fire1: {fileID: 0}
+  Fire2: {fileID: 0}
 --- !u!54 &6405058803588056683
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9891,6 +9894,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 0
   currentShip: 0
+  indexPlayer: 0
+  playerProfil: 
 --- !u!114 &4814573641297482725
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ public class Manager_JoinPlayer : MonoBehaviour
     public Transform playerStartPos2;
     public bool logMenu =false;
 
-
+    static public GameObject blackHoleInstante;
     // Start is called before the first frame update
     void Awake()
     {
@@ -96,7 +96,7 @@ public class Manager_JoinPlayer : MonoBehaviour
 
     public void InstantiateBlackHole()
     {
-        GameObject blackHoleInstante = Instantiate(blackHole, blackHolePosition.position, Quaternion.identity);
+        blackHoleInstante = Instantiate(blackHole, blackHolePosition.position, Quaternion.identity);
         BlackHole_Behavior blackhole = blackHoleInstante.GetComponent<BlackHole_Behavior>();
         blackhole.player = player;
         blackhole.manager = manager;
@@ -108,7 +108,10 @@ public class Manager_JoinPlayer : MonoBehaviour
     {
         player[0].transform.position = playerStartPos1.position;
         player[0].transform.rotation = Quaternion.identity;
+        player[0].GetComponent<MeshRenderer>().enabled = true;
         player[1].transform.position = playerStartPos2.position;
         player[1].transform.rotation = Quaternion.identity;
+        player[1].GetComponent<MeshRenderer>().enabled = true;
+        blackHoleInstante.GetComponentInChildren<ParticleSystemForceField>().gravity = 0.15f;
     }
 }
