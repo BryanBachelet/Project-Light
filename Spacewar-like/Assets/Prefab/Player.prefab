@@ -9597,7 +9597,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: d42f7b44f07cacb45944240f0e008b1f, type: 2}
-  - {fileID: 2100000, guid: ca925edec8686574b9f9656ea227fe93, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9808,7 +9807,7 @@ MonoBehaviour:
   projectileNumberAlive: 0
   lifetimeOfProjectile: 3.19
   activeTir: 0
-  timeBtwShoot: 0.2
+  timeBtwShoot: 0.4
   timeEcouleShoot: 0
   addBullet: 0
 --- !u!114 &3305467229545962448
