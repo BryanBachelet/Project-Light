@@ -27,6 +27,7 @@ public class Manager_Score : MonoBehaviour
     public GameObject finishGo;
     public GameObject firstButton;
     public GameObject root;
+    public Text Winner;
     public MultiplayerEventSystem eventSystem;
 
     [Header("Pause Phase")]
@@ -40,6 +41,8 @@ public class Manager_Score : MonoBehaviour
     [Header("Affichage")]
     public Text scoreBlueUi;
     public Text scoreRedUi;
+    public Text PlayerNameOne;
+    public Text PlayerNameTwo;
 
     private Manager_JoinPlayer manager_JoinPlayer;
     private static bool activeReset;
@@ -59,12 +62,15 @@ public class Manager_Score : MonoBehaviour
         if (Static_Variable.winPoint > 0 && Static_Variable.winPoint < 8)
         {
             winPoint = Static_Variable.winPoint;
+            PlayerNameOne.text = Static_Variable.profilName[0];
+            PlayerNameTwo.text = Static_Variable.profilName[1];
         }
         else
         {
             winPoint = 3;
         }
         ChangeState(StateOfGame.Start);
+
 
     }
 
@@ -216,9 +222,20 @@ public class Manager_Score : MonoBehaviour
         if (redScore == winPoint || blueScore == winPoint)
         {
             ChangeState(StateOfGame.Finish);
+            if (redScore == winPoint)
+            {
+                Winner.text = PlayerNameTwo.text + " Win !";
+            }
+            if(blueScore == winPoint)
+            {
+                Winner.text = PlayerNameOne.text + " Win !";
+            }
 
             blueScore = 0;
             redScore = 0;
+
+            
+           
         }
         else
         {

@@ -9577,7 +9577,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6094040997365583939}
-  m_Mesh: {fileID: -2432090755550338912, guid: a3b54638867bc1e4096f3b944a6c1e31, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: b0a198d1a565b6341a8013cbf483e1ef, type: 3}
 --- !u!23 &6094040997365583937
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9807,7 +9807,7 @@ MonoBehaviour:
   projectileNumberAlive: 0
   lifetimeOfProjectile: 3.19
   activeTir: 0
-  timeBtwShoot: 0.2
+  timeBtwShoot: 0.4
   timeEcouleShoot: 0
   addBullet: 0
 --- !u!114 &3305467229545962448

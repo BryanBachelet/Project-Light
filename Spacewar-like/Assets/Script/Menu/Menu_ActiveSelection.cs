@@ -15,7 +15,7 @@ public class Menu_ActiveSelection : MonoBehaviour
 
     public Image imagePlayer;
     public Text profilname;
-    public Text press;
+    public GameObject press;
 
     public Menu_PlayerInput playerInput;
     public PlayerInput player;
@@ -24,6 +24,8 @@ public class Menu_ActiveSelection : MonoBehaviour
     public int index;
     public bool resetInput;
     public bool ready;
+    public GameObject pressX;
+  
 
     private float axisReset;
     private int frame;
@@ -45,9 +47,10 @@ public class Menu_ActiveSelection : MonoBehaviour
             {
                 screenSelection.SendReady();
                 ready = true;
-                press.gameObject.SetActive(false);
+                pressX.SetActive(false);
                 Static_Variable.profilName[indexPlayer] = screenSelection.nameProfil[index];
                 Static_Variable.profilColor[indexPlayer] = screenSelection.colors[index];
+               
             }
         }
     }
@@ -66,7 +69,7 @@ public class Menu_ActiveSelection : MonoBehaviour
         {
             screenSelection.SendUnready();
             ready = false;
-            press.gameObject.SetActive(true);
+            pressX.SetActive(true);
         }
     }
 
@@ -77,12 +80,16 @@ public class Menu_ActiveSelection : MonoBehaviour
         eventSystem.playerRoot = root;
         Menu_SelectionInformation menu_SelectionInformation = this.root.GetComponent<Menu_SelectionInformation>();
         imagePlayer = menu_SelectionInformation.playerImage;
-        press = menu_SelectionInformation.pressText;
+        press = menu_SelectionInformation.pressText.gameObject;
         profilname = menu_SelectionInformation.profilName;
+        press.gameObject.SetActive(false);
         screenSelection = menu_SelectionInformation.screenSelection;
         imagePlayer.gameObject.SetActive(true);
         profilname.gameObject.SetActive(true);
+        pressX = menu_SelectionInformation.presButtoN;
+        pressX.SetActive(true);
         profilname.text = screenSelection.nameProfil[index];
+        imagePlayer.sprite = screenSelection.sprites[index];
     }
 
 
@@ -100,12 +107,14 @@ public class Menu_ActiveSelection : MonoBehaviour
 
                     index = IndexLoop(index, screenSelection.nameProfil.Length, true);
                     profilname.text = screenSelection.nameProfil[index];
+                    imagePlayer.sprite = screenSelection.sprites[index];
                 }
                 if (axis < -0.2f)
                 {
 
                     index = IndexLoop(index, screenSelection.nameProfil.Length, false);
                     profilname.text = screenSelection.nameProfil[index];
+                    imagePlayer.sprite = screenSelection.sprites[index];
 
                 }
                 resetInput = false;
