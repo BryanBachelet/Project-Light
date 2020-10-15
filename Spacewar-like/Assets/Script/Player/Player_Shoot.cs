@@ -77,7 +77,7 @@ public class Player_Shoot : MonoBehaviour
             {
                 return;
             }
-            GameObject bullet = Instantiate(projectileShoot, transform.position + instantiatePos, Quaternion.identity);
+            GameObject bullet = Instantiate(projectileShoot, transform.position + instantiatePos, transform.rotation);
             Projectile_Behavior currentProjectile = bullet.GetComponent<Projectile_Behavior>();
             currentProjectile.lifetime = lifetimeOfProjectile;
             currentProjectile.speedProjectile = speedProjectile;
