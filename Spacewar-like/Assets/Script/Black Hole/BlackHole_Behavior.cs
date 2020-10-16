@@ -18,6 +18,17 @@ public class BlackHole_Behavior : MonoBehaviour
         if (manager.gameState == Manager_Score.StateOfGame.Game)
         {
             BlackHoleAttraction();
+            for (int i = 0; i < player.Length; i++)
+            {
+                player[i].GetComponent<Player_Mouvement>().StopMouvemen(false);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < player.Length; i++)
+            {
+               player[i].GetComponent<Player_Mouvement>().StopMouvemen(true) ;
+            }
         }
     }
 

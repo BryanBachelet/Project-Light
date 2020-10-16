@@ -9546,6 +9546,7 @@ GameObject:
   - component: {fileID: 4814573641297482725}
   - component: {fileID: -5116284754532530318}
   - component: {fileID: 2483818892067782880}
+  - component: {fileID: 4094461018570301277}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -9585,7 +9586,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6094040997365583939}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -9783,6 +9784,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5e4a555f-0763-4cd5-baf9-5a6457ebf9c7
     m_ActionName: Player/Pause Menu[/XInputControllerWindows/start,/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0e0b67da-1299-4979-8650-822df5366eee
+    m_ActionName: UI/OtherSetting[/XInputControllerWindows/buttonNorth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
@@ -9807,6 +9812,7 @@ MonoBehaviour:
   projectileNumberAlive: 0
   lifetimeOfProjectile: 3.19
   activeTir: 0
+  ShootEvent: event:/Shoot
   timeBtwShoot: 0.4
   timeEcouleShoot: 0
   addBullet: 0
@@ -9861,6 +9867,7 @@ MonoBehaviour:
   activeControl: 1
   model: {fileID: 6900949405362314810}
   timerAcceleration: 0
+  Prop: event:/Propulsion
   reactor1: {fileID: 8169949605117241484}
   reactor2: {fileID: 4452221859658116501}
   Fire1: {fileID: 0}
@@ -9939,6 +9946,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
+--- !u!114 &4094461018570301277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6094040997365583939}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: -1
+  OverrideMaxDistance: -1
 --- !u!1 &6871606491804945641
 GameObject:
   m_ObjectHideFlags: 0
@@ -9988,7 +10018,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2612529651692420063
 Transform:
   m_ObjectHideFlags: 0
@@ -10018,7 +10048,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6900949405362314810}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -10029,9 +10059,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d42f7b44f07cacb45944240f0e008b1f, type: 2}
-  - {fileID: 2100000, guid: 63f0c4beb4458bf4ca5966dabb189154, type: 2}
-  - {fileID: 2100000, guid: 139c4d6158fa04341bc4c1f381caf39b, type: 2}
+  - {fileID: 2100000, guid: 45f8740cce4dbd8408aca0822cdb54ce, type: 2}
+  - {fileID: 2100000, guid: aeaff353059dc64488971aaec063376a, type: 2}
+  - {fileID: 2100000, guid: ae26b540b22c4904c851541856494990, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

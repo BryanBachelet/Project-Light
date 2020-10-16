@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using FMODUnity;
 
 public class Player_Shoot : MonoBehaviour
 {
@@ -10,22 +11,34 @@ public class Player_Shoot : MonoBehaviour
     public Vector3 instantiatePos;
     public float speedProjectile;
     public int projectileNumberAlive;
- //   public int maxProjectileNumber;
+    //   public int maxProjectileNumber;
     public float lifetimeOfProjectile;
 
-    private List<GameObject> projectileAlive =  new List<GameObject>();
+    private List<GameObject> projectileAlive = new List<GameObject>();
     [SerializeField]
     private bool activeTir;
+
+    [FMODUnity.EventRef]
+    public string ShootEvent = "";
+
+    FMOD.Studio.EventInstance shootEvent;
 
     public float timeBtwShoot;
     public float timeEcouleShoot;
     public bool addBullet;
+
+    public void Start()
+    {
+        shootEvent = FMODUnity.RuntimeManager.CreateInstance(ShootEvent);
+       // shootEvent.start();
+    }
+
     public void Update()
     {
         if (activeTir)
         {
 
-            if(timeEcouleShoot >= timeBtwShoot)
+            if (timeEcouleShoot >= timeBtwShoot)
             {
                 activeTir = false;
                 //AddShot();
@@ -53,25 +66,9 @@ public class Player_Shoot : MonoBehaviour
     }
     public void Shoot(InputAction.CallbackContext ctx)
     {
-        if ( this.enabled == true && ctx.performed)
+        if (this.enabled == true && ctx.performed)
         {
-            //if (!activeTir)
-            //{
-            //    if(!addBullet)
-            //    {
-            //        activeTir = true;
-            //        return;
-            //    }
-            //    timeEcouleShoot = timeBtwShoot;
-            //    return;
-            //}
-            //else
-            //{
-            //    if(addBullet)
-            //    {
-            //        return;
-            //    }
-            //}
+
 
             if (activeTir)
             {
@@ -87,7 +84,7 @@ public class Player_Shoot : MonoBehaviour
             projectileAlive.Add(bullet);
             Debug.Log(activeTir);
             AddShot();
-
+            shootEvent.start();
             activeTir = true;
             timeEcouleShoot = 0;
 
@@ -95,8 +92,8 @@ public class Player_Shoot : MonoBehaviour
 
             return;
         }
-        
-        
+
+
 
     }
 
@@ -115,11 +112,11 @@ public class Player_Shoot : MonoBehaviour
         projectileNumberAlive = 0;
         for (int i = 0; i < projectileAlive.Count; i++)
         {
-            Destroy(projectileAlive[i]); 
-          
+            Destroy(projectileAlive[i]);
+
         }
         projectileAlive = new List<GameObject>();
     }
-    
-    
+
+
 }

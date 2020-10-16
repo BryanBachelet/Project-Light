@@ -12,6 +12,10 @@ public class Static_Variable : MonoBehaviour
 
     public static int winPoint;
 
+    public  static bool son = true;
+
+
+    
 
     public static void ResetVariable(int playerNumber)
     {

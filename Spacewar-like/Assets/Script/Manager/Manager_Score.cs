@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.EventSystems;
+using FMODUnity;
 
 public class Manager_Score : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class Manager_Score : MonoBehaviour
     public GameObject rootPause;
 
 
+
     private float countStartPhase;
 
     [Header("Affichage")]
@@ -44,16 +46,34 @@ public class Manager_Score : MonoBehaviour
     public Text PlayerNameOne;
     public Text PlayerNameTwo;
 
+    public Manager_Rythm managerSon;
+
     private Manager_JoinPlayer manager_JoinPlayer;
     private static bool activeReset;
 
+    private bool test;
+
     public GameObject prefabExplosion;
+
+    [FMODUnity.EventRef]
+    public string blackHole = "";
+    FMOD.Studio.EventInstance holeEvent;
+
+
+    [FMODUnity.EventRef]
+    public string Prop = "";
+    FMOD.Studio.EventInstance PropEvent;
+
+
+
     static GameObject explosionParticles;
     static GameObject lastExplosion;
     static float tempsEcouleExplosion;
     // Start is called before the first frame update
     void Start()
     {
+        PropEvent = FMODUnity.RuntimeManager.CreateInstance(Prop);
+        PropEvent.start();
         if (prefabExplosion != null)
         {
             explosionParticles = prefabExplosion;
@@ -70,6 +90,7 @@ public class Manager_Score : MonoBehaviour
             winPoint = 3;
         }
         ChangeState(StateOfGame.Start);
+       
 
 
     }
@@ -100,6 +121,7 @@ public class Manager_Score : MonoBehaviour
 
             if (activeReset)
             {
+
                 if (countdownOfDeath > timerOfDeath)
                 {
                     SetScore();
@@ -108,6 +130,11 @@ public class Manager_Score : MonoBehaviour
                 else
                 {
                     countdownOfDeath += Time.deltaTime;
+                    if (!test)
+                    {
+                        managerSon.Sound();
+                        test = true;
+                    }
                 }
             }
         }
@@ -122,6 +149,11 @@ public class Manager_Score : MonoBehaviour
 
         }
 
+    }
+
+    public void StopProp()
+    {
+        PropEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
     public void ActiveGame()
@@ -161,6 +193,11 @@ public class Manager_Score : MonoBehaviour
     }
 
 
+    public void ResetPause()
+    {
+        ChangeState(StateOfGame.Game);
+    }
+
     public void ChangeState(StateOfGame state)
     {
         gameState = state;
@@ -179,7 +216,7 @@ public class Manager_Score : MonoBehaviour
                 ActiveFinish();
                 break;
             case (StateOfGame.Pause):
-
+                ActivePause();
                 break;
 
         }
@@ -199,9 +236,10 @@ public class Manager_Score : MonoBehaviour
     {
         Destroy(lastExplosion);
         Manager_JoinPlayer.blackHoleInstante.GetComponentInChildren<ParticleSystemForceField>().gravity = -5f;
+
         //lastExplosion = Instantiate(explosionParticles, player.transform.position, player.transform.rotation);
         player.GetComponent<Player_Team>().currentShip = Player_Team.ShipState.Die;
-        player.GetComponent<MeshRenderer>().enabled = false;
+        player.transform.GetChild(0).gameObject.SetActive(false);
         //player.SetActive(false);
 
         tempsEcouleExplosion = 0;
@@ -226,7 +264,7 @@ public class Manager_Score : MonoBehaviour
             {
                 Winner.text = PlayerNameTwo.text + " Win !";
             }
-            if(blueScore == winPoint)
+            if (blueScore == winPoint)
             {
                 Winner.text = PlayerNameOne.text + " Win !";
             }
@@ -234,8 +272,8 @@ public class Manager_Score : MonoBehaviour
             blueScore = 0;
             redScore = 0;
 
-            
-           
+
+
         }
         else
         {
@@ -245,6 +283,7 @@ public class Manager_Score : MonoBehaviour
         scoreBlueUi.text = blueScore.ToString();
         scoreRedUi.text = redScore.ToString();
         ResetGame();
+        test = false;
     }
 
     public void ResetGame()
@@ -255,6 +294,7 @@ public class Manager_Score : MonoBehaviour
             manager_JoinPlayer.player[i].SetActive(true);
             manager_JoinPlayer.player[i].GetComponent<Player_Team>().currentShip = Player_Team.ShipState.Alive;
             manager_JoinPlayer.player[i].GetComponent<Player_Team>().ResetGame();
+            manager_JoinPlayer.player[i].transform.GetChild(0).gameObject.SetActive(true);
         }
         manager_JoinPlayer.ResetGame();
 

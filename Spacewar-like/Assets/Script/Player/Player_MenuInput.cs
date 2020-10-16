@@ -9,6 +9,6 @@ public class Player_MenuInput : MonoBehaviour
 
    public void InputMenu(InputAction.CallbackContext ctx)
     {
-        manager.ActivePause();
+        manager.ChangeState(Manager_Score.StateOfGame.Pause);
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using FMODUnity;
 
 
 public class Manager_JoinPlayer : MonoBehaviour
@@ -19,10 +20,17 @@ public class Manager_JoinPlayer : MonoBehaviour
     public Transform playerStartPos2;
     public bool logMenu = false;
 
+    public StudioListener studio;
+
+    public Color red;
+    public Color blue;
+
+
     static public GameObject blackHoleInstante;
     // Start is called before the first frame update
     void Awake()
     {
+        studio.enabled = Static_Variable.son;
         gamepad = new Gamepad[Static_Variable.gamepad.Length];
         manager = GetComponent<Manager_Score>();
         InstantiateBlackHole();
@@ -61,12 +69,12 @@ public class Manager_JoinPlayer : MonoBehaviour
         if (i == 0)
         {
             player[i].transform.position = playerStartPos1.position;
-            SetPlayerTeam(player[i], Color.blue, Player_Team.ColorTeam.Blue);
+            SetPlayerTeam(player[i],blue, Player_Team.ColorTeam.Blue);
         }
         if (i == 1)
         {
             player[i].transform.position = playerStartPos2.position;
-            SetPlayerTeam(player[i], Color.red, Player_Team.ColorTeam.Red);
+            SetPlayerTeam(player[i],red, Player_Team.ColorTeam.Red);
         }
         i++;
     }
@@ -76,12 +84,12 @@ public class Manager_JoinPlayer : MonoBehaviour
         player.GetComponent<Player_Team>().team = colorTeam;
         player.GetComponent<Player_Team>().indexPlayer = i;
         player.GetComponent<MeshRenderer>().material.color = teamColor;
-        player.GetComponent<MeshRenderer>().material.SetColor("_EmissiveColor",teamColor);
+        player.GetComponent<MeshRenderer>().material.SetColor("_EmissiveColor",teamColor );
 
-        //Player_Mouvement Mouvement = player.GetComponent<Player_Mouvement>();
-        //MeshRenderer mesh = Mouvement.model.GetComponent<MeshRenderer>();
-        //mesh.materials[0].color = teamColor;
-        //mesh.materials[2].color = teamColor * 0.80f;
+        Player_Mouvement Mouvement = player.GetComponent<Player_Mouvement>();
+        MeshRenderer mesh = Mouvement.model.GetComponent<MeshRenderer>();
+        mesh.materials[0].color = teamColor;
+        mesh.materials[1].color = teamColor * 0.75f;
         player.GetComponent<Player_MenuInput>().manager = manager;
     }
 
@@ -114,10 +122,10 @@ public class Manager_JoinPlayer : MonoBehaviour
     {
         player[0].transform.position = playerStartPos1.position;
         player[0].transform.rotation = Quaternion.identity;
-        player[0].GetComponent<MeshRenderer>().enabled = true;
+      //  player[0].GetComponent<MeshRenderer>().enabled = true;
         player[1].transform.position = playerStartPos2.position;
         player[1].transform.rotation = Quaternion.identity;
-        player[1].GetComponent<MeshRenderer>().enabled = true;
+       // player[1].GetComponent<MeshRenderer>().enabled = true;
         blackHoleInstante.GetComponentInChildren<ParticleSystemForceField>().gravity = 0.15f;
     }
 }

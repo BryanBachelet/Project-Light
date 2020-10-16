@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using FMODUnity;
 
 
 public class Menu_PlayerInput : MonoBehaviour
@@ -20,9 +22,17 @@ public class Menu_PlayerInput : MonoBehaviour
     public GameObject selectButton;
     public GameObject Rroot;
 
-    
+    [Header("Son")]
+    public Image ima;
+    public Sprite one;
+    public Sprite two;
+
+    [FMODUnity.EventRef]
+    public string Prop = "";
+    FMOD.Studio.EventInstance PropEvent;
+
     public GameObject Selection;
-    public MultiplayerEventSystem system ;
+    public MultiplayerEventSystem system;
 
 
     public int i;
@@ -33,6 +43,8 @@ public class Menu_PlayerInput : MonoBehaviour
         inputManager = GetComponent<PlayerInputManager>();
         inputManager.playerPrefab = prefabPlayer;
         InstantiateFirstPlayer();
+        PropEvent = FMODUnity.RuntimeManager.CreateInstance(Prop);
+      
     }
 
     // Update is called once per frame
@@ -66,6 +78,20 @@ public class Menu_PlayerInput : MonoBehaviour
                 player[i].SetActive(true);
             }
         }
+    }
+
+    public void Son()
+    {
+        Static_Variable.son = !Static_Variable.son;
+        if (Static_Variable.son)
+        {
+            ima.sprite = one;
+        }
+        else
+        {
+            ima.sprite = two;
+        }
+
     }
 
     public void ReturnGameMode()

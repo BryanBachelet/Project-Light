@@ -25,6 +25,10 @@ public class Player_Mouvement : MonoBehaviour
     private float factorAcceleration = 0;
     public float timerAcceleration = 0;
 
+    [FMODUnity.EventRef]
+    public string Prop = "";
+    FMOD.Studio.EventInstance PropEvent;
+
     public ParticleSystem reactor1;
     public ParticleSystem reactor2;
     public ParticleSystem Fire1;
@@ -34,19 +38,21 @@ public class Player_Mouvement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(reactor1 != null)
+        if (reactor1 != null)
             reactor1Shape = reactor1.shape;
-        if(reactor2 != null)
+        if (reactor2 != null)
             reactor2Shape = reactor2.shape;
         rigid_Player = GetComponent<Rigidbody>();
+
     }
+
 
     // Update is called once per frame
     void FixedUpdate()
     {
 
 
-        if(activeControl)
+        if (activeControl)
         {
             Acceleration();
             AccelerationInput();
@@ -62,10 +68,12 @@ public class Player_Mouvement : MonoBehaviour
 
     public void Acceleration()
     {
+
+
         Debug.Log(_triggerAxis);
         reactor1.startLifetime = _triggerAxis * 20;
         reactor1Shape.angle = 0.07f + (100f * speedOfMouvement.Evaluate(timerAcceleration));
-      //  Fire1.startSpeed = (speedOfMouvement.Evaluate(timerAcceleration) * _triggerAxis) / 8;
+        //  Fire1.startSpeed = (speedOfMouvement.Evaluate(timerAcceleration) * _triggerAxis) / 8;
         reactor2.startLifetime = _triggerAxis * 20;
         reactor2Shape.angle = 0.07f + (100f * speedOfMouvement.Evaluate(timerAcceleration));
         //Fire2.startSpeed = (speedOfMouvement.Evaluate(timerAcceleration) * _triggerAxis) / 8;
@@ -76,6 +84,11 @@ public class Player_Mouvement : MonoBehaviour
     public void Rotation()
     {
         transform.Rotate(0, _rightAxis * speedOfRotation * Time.deltaTime, 0);
+    }
+
+    public void StopMouvemen(bool state)
+    {
+        rigid_Player.isKinematic = state;
     }
 
 
@@ -91,11 +104,11 @@ public class Player_Mouvement : MonoBehaviour
     public void AccelerationInput()
     {
         factorAcceleration = _triggerAxis;
-        if(factorAcceleration > 0)
+        if (factorAcceleration > 0)
         {
             timerAcceleration += Time.deltaTime * factorAcceleration;
         }
-        else if(factorAcceleration <= 0)
+        else if (factorAcceleration <= 0)
         {
             timerAcceleration = 0;
         }

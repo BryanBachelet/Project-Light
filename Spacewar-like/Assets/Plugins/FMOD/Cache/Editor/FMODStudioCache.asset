@@ -1,5 +1,77 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9164217716111942494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../../Zevent/Zevent/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637384588776321738
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-8657025640164290956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../../Zevent/Zevent/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637384453465020968
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
+--- !u!114 &-7208532625139668808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../../Zevent/Zevent/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637384451207534797
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
+--- !u!114 &-6152505772969738431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../../Zevent/Zevent/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637384573533058614
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
 --- !u!114 &-4550227008023096015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,14 +87,14 @@ MonoBehaviour:
   Path: event:/Explosion
   guid: b8b98f9a4b512a42aa603ee524de54e6
   Banks:
-  - {fileID: -3822420887141238001}
+  - {fileID: -9164217716111942494}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 0
+  Length: 2000
 --- !u!114 &-3822420887141238001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40,7 +112,7 @@ MonoBehaviour:
   lastModified: 637383983433612027
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &-3719328403855456049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56,7 +128,7 @@ MonoBehaviour:
   Path: event:/Start
   guid: dc44ccb8af90dd4398d9b0d8d62658e0
   Banks:
-  - {fileID: -3822420887141238001}
+  - {fileID: -9164217716111942494}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -79,14 +151,32 @@ MonoBehaviour:
   Path: event:/Shoot
   guid: d0ecc27fc7481e4d861cad55faf2ec1f
   Banks:
-  - {fileID: -3822420887141238001}
+  - {fileID: -9164217716111942494}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 0
+  Length: 940
+--- !u!114 &-19461433788721953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../../Zevent/Zevent/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637384476837334744
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,7 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 3482878391898249239}
-  - {fileID: -3822420887141238001}
+  - {fileID: -9164217716111942494}
   EditorEvents:
   - {fileID: -4550227008023096015}
   - {fileID: 8896921515549258574}
@@ -109,11 +199,29 @@ MonoBehaviour:
   - {fileID: -3719328403855456049}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -3822420887141238001}
+  - {fileID: -9164217716111942494}
   StringsBanks:
   - {fileID: 3482878391898249239}
-  stringsBankWriteTime: 637383983434001604
+  stringsBankWriteTime: 637384588777470456
   cacheVersion: 3
+--- !u!114 &526312909601827693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../../Zevent/Zevent/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637384464731136021
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
 --- !u!114 &3482878391898249239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,7 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../../Zevent/Zevent/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637383983434001604
+  lastModified: 637384588777470456
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -149,11 +257,11 @@ MonoBehaviour:
   Path: event:/Propulsion
   guid: bfa261c0f455b7408dfca59b663ed6d8
   Banks:
-  - {fileID: -3822420887141238001}
-  IsStream: 0
+  - {fileID: -9164217716111942494}
+  IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 0
+  Length: 475384

@@ -1345,6 +1345,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1359,7 +1360,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
@@ -1434,6 +1435,19 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   priority: 0
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: -1
 --- !u!1 &964969232
 GameObject:
   m_ObjectHideFlags: 0
@@ -1748,6 +1762,9 @@ MonoBehaviour:
   playerStartPos1: {fileID: 2133152789}
   playerStartPos2: {fileID: 1169983253}
   logMenu: 0
+  studio: {fileID: 963194230}
+  red: {r: 0.990566, g: 0.16353682, b: 0.16353682, a: 1}
+  blue: {r: 0.18974723, g: 0.66375375, b: 0.9811321, a: 1}
 --- !u!114 &1135754700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1779,8 +1796,11 @@ MonoBehaviour:
   scoreRedUi: {fileID: 1445655622}
   PlayerNameOne: {fileID: 361541678}
   PlayerNameTwo: {fileID: 827706839}
+  managerSon: {fileID: 1135754701}
   prefabExplosion: {fileID: 1329845292236604, guid: 9bba9cf244c53c5439505dfc96fdd11c,
     type: 3}
+  blackHole: event:/Explosion
+  Prop: event:/Propulsion
 --- !u!114 &1135754701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1793,6 +1813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b2b4a03d28f1d340ae3170b8e57d3e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blackHole: event:/Explosion
 --- !u!114 &1135754702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2124,7 +2145,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1135754700}
-        m_MethodName: ActiveGame
+        m_MethodName: ResetPause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2422,6 +2443,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1135754700}
+        m_MethodName: StopProp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1949450782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2554,6 +2586,17 @@ MonoBehaviour:
       - m_Target: {fileID: 1135754702}
         m_MethodName: ChangeScene
         m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1135754700}
+        m_MethodName: StopProp
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
