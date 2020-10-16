@@ -1118,8 +1118,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: []
   distance: 30
-  maxforce: 11
-  minForce: 7
+  maxforce: 9
+  minForce: 5
   manager: {fileID: 0}
 --- !u!135 &8250556568345611960
 SphereCollider:

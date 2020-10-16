@@ -17,7 +17,7 @@ public class Manager_JoinPlayer : MonoBehaviour
 
     public Transform playerStartPos1;
     public Transform playerStartPos2;
-    public bool logMenu =false;
+    public bool logMenu = false;
 
     static public GameObject blackHoleInstante;
     // Start is called before the first frame update
@@ -76,6 +76,12 @@ public class Manager_JoinPlayer : MonoBehaviour
         player.GetComponent<Player_Team>().team = colorTeam;
         player.GetComponent<Player_Team>().indexPlayer = i;
         player.GetComponent<MeshRenderer>().material.color = teamColor;
+        player.GetComponent<MeshRenderer>().material.SetColor("_EmissiveColor",teamColor);
+
+        //Player_Mouvement Mouvement = player.GetComponent<Player_Mouvement>();
+        //MeshRenderer mesh = Mouvement.model.GetComponent<MeshRenderer>();
+        //mesh.materials[0].color = teamColor;
+        //mesh.materials[2].color = teamColor * 0.80f;
         player.GetComponent<Player_MenuInput>().manager = manager;
     }
 
@@ -100,7 +106,7 @@ public class Manager_JoinPlayer : MonoBehaviour
         BlackHole_Behavior blackhole = blackHoleInstante.GetComponent<BlackHole_Behavior>();
         blackhole.player = player;
         blackhole.manager = manager;
-        
+
 
     }
 

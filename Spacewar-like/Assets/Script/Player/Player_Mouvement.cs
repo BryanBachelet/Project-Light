@@ -20,6 +20,8 @@ public class Player_Mouvement : MonoBehaviour
     private float _triggerAxis;
     private float _rightAxis;
 
+    public GameObject model;
+
     private float factorAcceleration = 0;
     public float timerAcceleration = 0;
 

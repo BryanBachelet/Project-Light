@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
+using UnityEngine.SceneManagement;
 
 
 public class Menu_PlayerInput : MonoBehaviour
@@ -19,6 +20,7 @@ public class Menu_PlayerInput : MonoBehaviour
     public GameObject selectButton;
     public GameObject Rroot;
 
+    
     public GameObject Selection;
     public MultiplayerEventSystem system ;
 
@@ -68,20 +70,22 @@ public class Menu_PlayerInput : MonoBehaviour
 
     public void ReturnGameMode()
     {
-        isSelection = false;
-        MenuPlayer.SetActive(true);
-        gameSelection.SetActive(true);
-        Selection.SetActive(false);
-        system.playerRoot = Rroot;
-        system.SetSelectedGameObject(selectButton);
-        system.firstSelectedGameObject = selectButton;
-        for (int i = 0; i < player.Length; i++)
-        {
-            if (player[i] != null)
-            {
-                player[i].SetActive(false);
-            }
-        }
+        SceneManager.LoadScene(0);
+        Static_Variable.ResetVariable(2);
+        //isSelection = false;
+        //MenuPlayer.SetActive(true);
+        //gameSelection.SetActive(true);
+        //Selection.SetActive(false);
+        //system.playerRoot = Rroot;
+        //system.SetSelectedGameObject(selectButton);
+        //system.firstSelectedGameObject = selectButton;
+        //for (int i = 0; i < player.Length; i++)
+        //{
+        //    if (player[i] != null)
+        //    {
+        //        player[i].SetActive(false);
+        //    }
+        //}
     }
 
     public bool CheckGamepad(Gamepad current)

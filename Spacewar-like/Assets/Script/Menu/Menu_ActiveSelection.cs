@@ -25,7 +25,8 @@ public class Menu_ActiveSelection : MonoBehaviour
     public bool resetInput;
     public bool ready;
     public GameObject pressX;
-  
+    public GameObject readyImage;
+        
 
     private float axisReset;
     private int frame;
@@ -48,8 +49,9 @@ public class Menu_ActiveSelection : MonoBehaviour
                 screenSelection.SendReady();
                 ready = true;
                 pressX.SetActive(false);
+                readyImage.SetActive(true);
                 Static_Variable.profilName[indexPlayer] = screenSelection.nameProfil[index];
-                Static_Variable.profilColor[indexPlayer] = screenSelection.colors[index];
+              //  Static_Variable.profilColor[indexPlayer] = screenSelection.colors[index];
                
             }
         }
@@ -70,6 +72,7 @@ public class Menu_ActiveSelection : MonoBehaviour
             screenSelection.SendUnready();
             ready = false;
             pressX.SetActive(true);
+            readyImage.SetActive(false);
         }
     }
 
@@ -80,6 +83,7 @@ public class Menu_ActiveSelection : MonoBehaviour
         eventSystem.playerRoot = root;
         Menu_SelectionInformation menu_SelectionInformation = this.root.GetComponent<Menu_SelectionInformation>();
         imagePlayer = menu_SelectionInformation.playerImage;
+        readyImage = menu_SelectionInformation.ready;
         press = menu_SelectionInformation.pressText.gameObject;
         profilname = menu_SelectionInformation.profilName;
         press.gameObject.SetActive(false);

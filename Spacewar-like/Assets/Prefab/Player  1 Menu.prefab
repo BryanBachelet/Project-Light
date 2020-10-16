@@ -165,6 +165,21 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 5e4a555f-0763-4cd5-baf9-5a6457ebf9c7
     m_ActionName: Player/Pause Menu[/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3548597341519646880}
+        m_MethodName: ReturnMenu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0e0b67da-1299-4979-8650-822df5366eee
+    m_ActionName: UI/OtherSetting[/XInputControllerWindows/buttonNorth,/XInputControllerWindows/buttonNorth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: UI
@@ -196,6 +211,7 @@ MonoBehaviour:
   resetInput: 0
   ready: 0
   pressX: {fileID: 0}
+  readyImage: {fileID: 0}
 --- !u!114 &8667813853766081745
 MonoBehaviour:
   m_ObjectHideFlags: 0

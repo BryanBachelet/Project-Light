@@ -11,5 +11,6 @@ public class Menu_SelectionInformation : MonoBehaviour
     public Menu_ScreenSelection screenSelection;
     public Text profilName;
     public GameObject presButtoN;
+    public GameObject ready;
 
 }

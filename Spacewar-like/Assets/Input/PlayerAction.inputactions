@@ -167,6 +167,17 @@
                     "action": "Pause Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5e9ea8b2-3055-4462-b5f7-160b24afc784",
+                    "path": "<DualShockGamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Pause Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -274,6 +285,14 @@
                     "name": "Validate",
                     "type": "Button",
                     "id": "b98548aa-7d4c-4b91-99fb-308d951dd9a5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "OtherSetting",
+                    "type": "Button",
+                    "id": "0e0b67da-1299-4979-8650-822df5366eee",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -744,12 +763,56 @@
                 },
                 {
                     "name": "",
+                    "id": "e0c4bc5c-0b97-4d72-a8f0-6d8e195576bb",
+                    "path": "<DualShockGamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Return",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "767f80e5-ec5a-4776-9bbd-30a63675b0fa",
                     "path": "<XInputController>/buttonWest",
                     "interactions": "Press",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Validate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a78f6080-79b1-4cf8-92ef-3059a0b4854f",
+                    "path": "<DualShockGamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Validate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "62f22d3e-c9b6-4f1f-9475-e894414e2c6d",
+                    "path": "<DualShockGamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "OtherSetting",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "63d2c6b1-e519-4a7c-8360-359392e670c8",
+                    "path": "<XInputController>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "OtherSetting",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

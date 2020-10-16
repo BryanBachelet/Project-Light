@@ -180,6 +180,17 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                     ""action"": ""Pause Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5e9ea8b2-3055-4462-b5f7-160b24afc784"",
+                    ""path"": ""<DualShockGamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Pause Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -287,6 +298,14 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                     ""name"": ""Validate"",
                     ""type"": ""Button"",
                     ""id"": ""b98548aa-7d4c-4b91-99fb-308d951dd9a5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""OtherSetting"",
+                    ""type"": ""Button"",
+                    ""id"": ""0e0b67da-1299-4979-8650-822df5366eee"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -757,12 +776,56 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""e0c4bc5c-0b97-4d72-a8f0-6d8e195576bb"",
+                    ""path"": ""<DualShockGamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Return"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""767f80e5-ec5a-4776-9bbd-30a63675b0fa"",
                     ""path"": ""<XInputController>/buttonWest"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Validate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a78f6080-79b1-4cf8-92ef-3059a0b4854f"",
+                    ""path"": ""<DualShockGamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Validate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""62f22d3e-c9b6-4f1f-9475-e894414e2c6d"",
+                    ""path"": ""<DualShockGamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""OtherSetting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""63d2c6b1-e519-4a7c-8360-359392e670c8"",
+                    ""path"": ""<XInputController>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""OtherSetting"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -854,6 +917,7 @@ public class @PlayerAction : IInputActionCollection, IDisposable
         m_UI_ScrollHorizontal = m_UI.FindAction("Scroll Horizontal", throwIfNotFound: true);
         m_UI_Return = m_UI.FindAction("Return", throwIfNotFound: true);
         m_UI_Validate = m_UI.FindAction("Validate", throwIfNotFound: true);
+        m_UI_OtherSetting = m_UI.FindAction("OtherSetting", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -981,6 +1045,7 @@ public class @PlayerAction : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_ScrollHorizontal;
     private readonly InputAction m_UI_Return;
     private readonly InputAction m_UI_Validate;
+    private readonly InputAction m_UI_OtherSetting;
     public struct UIActions
     {
         private @PlayerAction m_Wrapper;
@@ -998,6 +1063,7 @@ public class @PlayerAction : IInputActionCollection, IDisposable
         public InputAction @ScrollHorizontal => m_Wrapper.m_UI_ScrollHorizontal;
         public InputAction @Return => m_Wrapper.m_UI_Return;
         public InputAction @Validate => m_Wrapper.m_UI_Validate;
+        public InputAction @OtherSetting => m_Wrapper.m_UI_OtherSetting;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1046,6 +1112,9 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                 @Validate.started -= m_Wrapper.m_UIActionsCallbackInterface.OnValidate;
                 @Validate.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnValidate;
                 @Validate.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnValidate;
+                @OtherSetting.started -= m_Wrapper.m_UIActionsCallbackInterface.OnOtherSetting;
+                @OtherSetting.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnOtherSetting;
+                @OtherSetting.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnOtherSetting;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -1089,6 +1158,9 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                 @Validate.started += instance.OnValidate;
                 @Validate.performed += instance.OnValidate;
                 @Validate.canceled += instance.OnValidate;
+                @OtherSetting.started += instance.OnOtherSetting;
+                @OtherSetting.performed += instance.OnOtherSetting;
+                @OtherSetting.canceled += instance.OnOtherSetting;
             }
         }
     }
@@ -1161,5 +1233,6 @@ public class @PlayerAction : IInputActionCollection, IDisposable
         void OnScrollHorizontal(InputAction.CallbackContext context);
         void OnReturn(InputAction.CallbackContext context);
         void OnValidate(InputAction.CallbackContext context);
+        void OnOtherSetting(InputAction.CallbackContext context);
     }
 }
