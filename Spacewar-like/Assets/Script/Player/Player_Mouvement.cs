@@ -62,8 +62,14 @@ public class Player_Mouvement : MonoBehaviour
 
     }
 
-    public void OnTestTrigger(InputAction.CallbackContext ctx) { Manager_Score.PlayerDeath(gameObject); }
+    public void OnTestTrigger(InputAction.CallbackContext ctx)
+    {
+        Manager_Score.PlayerDeath(gameObject);
+    }
+
+
     public void OnAccelerartion(InputAction.CallbackContext ctx) => _triggerAxis = ctx.ReadValue<float>();
+
     public void OnRotation(InputAction.CallbackContext ctx) => _rightAxis = ctx.ReadValue<float>();
 
     public void Acceleration()

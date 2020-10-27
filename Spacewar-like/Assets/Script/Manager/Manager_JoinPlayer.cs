@@ -63,9 +63,9 @@ public class Manager_JoinPlayer : MonoBehaviour
     }
 
     public void InstantiatePlayer()
-    {
-
+    { 
         player[i] = inputManager.JoinPlayer(i, 0, "Gamepad", gamepad[i]).gameObject;
+
         if (i == 0)
         {
             player[i].transform.position = playerStartPos1.position;
