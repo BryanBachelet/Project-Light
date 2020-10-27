@@ -12,6 +12,8 @@ public class Manager_JoinPlayer : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject[] player;
     public Gamepad[] gamepad = new Gamepad[2];
+    public Keyboard keyboard;
+
     public int i = 0;
     public GameObject blackHole;
     public Transform blackHolePosition;
@@ -34,6 +36,8 @@ public class Manager_JoinPlayer : MonoBehaviour
         gamepad = new Gamepad[Static_Variable.gamepad.Length];
         manager = GetComponent<Manager_Score>();
         InstantiateBlackHole();
+
+        // Instantiate Player Gampad From Menu
         if (Static_Variable.player.Length > 1)
         {
             logMenu = true;
@@ -47,6 +51,7 @@ public class Manager_JoinPlayer : MonoBehaviour
 
     public void Update()
     {
+        //Instantiate Player from Gamepad directly in the scene  
         if (Gamepad.current != null && !logMenu)
         {
             if (Gamepad.current.aButton.wasPressedThisFrame)
