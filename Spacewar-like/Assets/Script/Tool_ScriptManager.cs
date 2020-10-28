@@ -5,9 +5,9 @@ using UnityEngine;
 public class Tool_ScriptManager : MonoBehaviour
 {
     public MonoBehaviour[] scriptListOne;
-    public float test;
 
-    public void Disable(bool state)
+    //Permet d'activer ou désactiver les scripts contenue dans le tableau
+    public void ChangeScriptStatus(bool state)
     {
         for (int i = 0; i < scriptListOne.Length; i++)
         {

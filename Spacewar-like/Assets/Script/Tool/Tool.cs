@@ -4,7 +4,10 @@ using UnityEngine;
 
 public  class Tool : MonoBehaviour
 {
-   public static bool ObjectOnScreen(Vector3 position)
+
+    //Permet de check si un objet est sur l'écran 
+
+    public static bool ObjectOnScreen(Vector3 position)
     {
 
         bool OnScreen = false;
@@ -23,6 +26,7 @@ public  class Tool : MonoBehaviour
         return OnScreen;
     }
 
+    //Fonction permettant de renvoyer le côté de l'écran ou est sorti de l'objet. 
     public static int CheckPositionOfOutScreen(Vector3 position)
     {
 

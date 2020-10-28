@@ -57,14 +57,6 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
-                },
-                {
-                    ""name"": ""Move Button"",
-                    ""type"": ""Button"",
-                    ""id"": ""28067a18-3f53-45bf-a734-767eda2f0b1c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -113,7 +105,7 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Negative"",
+                    ""name"": ""positive"",
                     ""id"": ""a2d0c842-c6f9-468f-bbc1-8daaf77bbd45"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
@@ -124,7 +116,7 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Positive"",
+                    ""name"": ""negative"",
                     ""id"": ""eaa8bde0-a635-4ea8-b69c-65308b2936e8"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
@@ -157,7 +149,18 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""1D Axis"",
+                    ""name"": """",
+                    ""id"": ""d9f65b90-210f-4f0a-8eba-4f7b53712d4e"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Controller Axis"",
                     ""id"": ""b31458b4-26ae-4843-aa1c-a75e42047664"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
@@ -185,6 +188,39 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Keyboard Axis"",
+                    ""id"": ""9733fe2c-e8a0-4225-8e63-e203c07e2b27"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""4688058c-9afe-420c-a7da-e2ad8b55790c"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""358a3e92-0048-4644-8055-3c3f15e4974a"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -224,12 +260,12 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""de54470e-40f4-4383-8769-3998acd8ae58"",
-                    ""path"": """",
+                    ""id"": ""924b8e47-523a-499c-9b92-01fd809661a6"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Move Button"",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Pause Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -943,7 +979,6 @@ public class @PlayerAction : IInputActionCollection, IDisposable
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_CheatDeath = m_Player.FindAction("CheatDeath", throwIfNotFound: true);
         m_Player_PauseMenu = m_Player.FindAction("Pause Menu", throwIfNotFound: true);
-        m_Player_MoveButton = m_Player.FindAction("Move Button", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1014,7 +1049,6 @@ public class @PlayerAction : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_CheatDeath;
     private readonly InputAction m_Player_PauseMenu;
-    private readonly InputAction m_Player_MoveButton;
     public struct PlayerActions
     {
         private @PlayerAction m_Wrapper;
@@ -1024,7 +1058,6 @@ public class @PlayerAction : IInputActionCollection, IDisposable
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @CheatDeath => m_Wrapper.m_Player_CheatDeath;
         public InputAction @PauseMenu => m_Wrapper.m_Player_PauseMenu;
-        public InputAction @MoveButton => m_Wrapper.m_Player_MoveButton;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1049,9 +1082,6 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                 @PauseMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseMenu;
                 @PauseMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseMenu;
                 @PauseMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseMenu;
-                @MoveButton.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveButton;
-                @MoveButton.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveButton;
-                @MoveButton.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveButton;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1071,9 +1101,6 @@ public class @PlayerAction : IInputActionCollection, IDisposable
                 @PauseMenu.started += instance.OnPauseMenu;
                 @PauseMenu.performed += instance.OnPauseMenu;
                 @PauseMenu.canceled += instance.OnPauseMenu;
-                @MoveButton.started += instance.OnMoveButton;
-                @MoveButton.performed += instance.OnMoveButton;
-                @MoveButton.canceled += instance.OnMoveButton;
             }
         }
     }
@@ -1267,7 +1294,6 @@ public class @PlayerAction : IInputActionCollection, IDisposable
         void OnFire(InputAction.CallbackContext context);
         void OnCheatDeath(InputAction.CallbackContext context);
         void OnPauseMenu(InputAction.CallbackContext context);
-        void OnMoveButton(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

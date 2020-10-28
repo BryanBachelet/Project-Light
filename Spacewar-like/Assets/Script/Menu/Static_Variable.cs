@@ -14,9 +14,6 @@ public class Static_Variable : MonoBehaviour
 
     public  static bool son = true;
 
-
-    
-
     public static void ResetVariable(int playerNumber)
     {
         player = new GameObject[playerNumber];

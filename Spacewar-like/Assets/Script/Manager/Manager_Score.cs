@@ -227,7 +227,7 @@ public class Manager_Score : MonoBehaviour
     {
         for (int i = 0; i < manager_JoinPlayer.player.Length; i++)
         {
-            manager_JoinPlayer.player[i].GetComponent<Tool_ScriptManager>().Disable(stateBool);
+            manager_JoinPlayer.player[i].GetComponent<Tool_ScriptManager>().ChangeScriptStatus(stateBool);
         }
     }
 

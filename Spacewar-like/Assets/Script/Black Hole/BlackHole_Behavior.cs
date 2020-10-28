@@ -9,25 +9,46 @@ public class BlackHole_Behavior : MonoBehaviour
     public float distance;
     public float maxforce = 10f;
     public float minForce = 3f;
-
-   
     public Manager_Score manager;
+
+    private bool Ingame = true;
 
     void Update()
     {
         if (manager.gameState == Manager_Score.StateOfGame.Game)
         {
+            // Attraction SpaceShip
             BlackHoleAttraction();
-            for (int i = 0; i < player.Length; i++)
-            {
-                player[i].GetComponent<Player_Mouvement>().StopMouvemen(false);
-            }
+            BlackHoleGameStatus();
+
         }
         else
         {
-            for (int i = 0; i < player.Length; i++)
+            BlackHoleGame();
+        }
+
+    }
+
+    private void BlackHoleGameStatus()
+    {
+            ChangePlayerMouvement(false);
+            return;       
+    }
+
+    private void BlackHoleGame()
+    {
+        ChangePlayerMouvement(true);
+        return;
+    }
+
+
+    private void ChangePlayerMouvement(bool changeState)
+    {
+        for (int i = 0; i < player.Length; i++)
+        {
+            if (player[i] != null)
             {
-               player[i].GetComponent<Player_Mouvement>().StopMouvemen(true) ;
+                player[i].GetComponent<Player_Mouvement>().StopMouvemen(changeState);
             }
         }
     }
@@ -41,14 +62,17 @@ public class BlackHole_Behavior : MonoBehaviour
     {
         for (int i = 0; i < player.Length; i++)
         {
-            float currentdist = Vector3.Distance(transform.position, player[i].transform.position);
-            float forceAppli = ForceTraction(currentdist);
-
-            if (currentdist < distance)
+            if (player[i] != null)
             {
-                Vector3 blackHoleDir = transform.position - player[i].transform.position;
-                Rigidbody rigid = player[i].GetComponent<Rigidbody>();
-                rigid.AddForce(blackHoleDir.normalized * forceAppli, ForceMode.Acceleration);
+                float currentdist = Vector3.Distance(transform.position, player[i].transform.position);
+                float forceAppli = ForceTraction(currentdist);
+
+                if (currentdist < distance)
+                {
+                    Vector3 blackHoleDir = transform.position - player[i].transform.position;
+                    Rigidbody rigid = player[i].GetComponent<Rigidbody>();
+                    rigid.AddForce(blackHoleDir.normalized * forceAppli, ForceMode.Acceleration);
+                }
             }
 
         }

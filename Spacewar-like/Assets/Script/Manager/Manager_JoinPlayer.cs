@@ -27,6 +27,8 @@ public class Manager_JoinPlayer : MonoBehaviour
     public Color red;
     public Color blue;
 
+    InputDevice device;
+
 
     static public GameObject blackHoleInstante;
     // Start is called before the first frame update
@@ -36,50 +38,101 @@ public class Manager_JoinPlayer : MonoBehaviour
         gamepad = new Gamepad[Static_Variable.gamepad.Length];
         manager = GetComponent<Manager_Score>();
         InstantiateBlackHole();
+        device = Keyboard.current;
+       
+        Debug.Log("Device = " + device.name);
 
         // Instantiate Player Gampad From Menu
-        if (Static_Variable.player.Length > 1)
-        {
-            logMenu = true;
-            for (int j = 0; j < Static_Variable.gamepad.Length; j++)
-            {
-                gamepad[i] = Static_Variable.gamepad[i];
-                InstantiatePlayer();
-            }
-        }
-    }
+        //if (Static_Variable.player.Length > 1)
+        //{
+        //    logMenu = true;
+        //    for (int j = 0; j < Static_Variable.gamepad.Length; j++)
+        //    {
+        //        gamepad[i] = Static_Variable.gamepad[i];
+        //        InstantiatePlayer("Gamepad");
+        //    }
+        //}
 
-    public void Update()
-    {
+        // Instatiate Player from Keyboard
+        if (Keyboard.current != null && !logMenu)
+        {
+            InstantiatePlayer();
+        }
+
         //Instantiate Player from Gamepad directly in the scene  
         if (Gamepad.current != null && !logMenu)
         {
-            if (Gamepad.current.aButton.wasPressedThisFrame)
-            {
+         
                 if (CheckGamepad(Gamepad.current))
                 {
                     gamepad[i] = Gamepad.current;
                     Debug.Log(gamepad[i]);
-                    InstantiatePlayer();
+                    InstantiatePlayer("Gamepad");
                 }
 
-            }
+            
         }
+
+      
     }
 
-    public void InstantiatePlayer()
-    { 
-        player[i] = inputManager.JoinPlayer(i, 0, "Gamepad", gamepad[i]).gameObject;
+    public void Update()
+    {
+        ////Instantiate Player from Gamepad directly in the scene  
+        //if (Gamepad.current != null && !logMenu)
+        //{
+        //    if (Gamepad.current.aButton.wasPressedThisFrame)
+        //    {
+        //        if (CheckGamepad(Gamepad.current))
+        //        {
+        //            gamepad[i] = Gamepad.current;
+        //            Debug.Log(gamepad[i]);
+        //            InstantiatePlayer("Gamepad");
+        //        }
+
+        //    }
+        //}
+
+        //// Instatiate Player from Keyboard
+        //if (Keyboard.current != null && !logMenu)
+        //{
+        //    InstantiatePlayer();
+        //}
+    }
+
+
+    public void InstantiatePlayer(string controller)
+    {
+        Debug.Log("Test");
+        player[i] = inputManager.JoinPlayer(i, 0, controller, gamepad[i]).gameObject;
 
         if (i == 0)
         {
             player[i].transform.position = playerStartPos1.position;
-            SetPlayerTeam(player[i],blue, Player_Team.ColorTeam.Blue);
+            SetPlayerTeam(player[i], blue, Player_Team.ColorTeam.Blue);
         }
         if (i == 1)
         {
             player[i].transform.position = playerStartPos2.position;
-            SetPlayerTeam(player[i],red, Player_Team.ColorTeam.Red);
+            SetPlayerTeam(player[i], red, Player_Team.ColorTeam.Red);
+        }
+        i++;
+    }
+
+    public void InstantiatePlayer()
+    {
+
+        player[i] = inputManager.JoinPlayer(i, 0, "KeyboardMouse", Keyboard.current).gameObject;
+
+        if (i == 0)
+        {
+            player[i].transform.position = playerStartPos1.position;
+            SetPlayerTeam(player[i], blue, Player_Team.ColorTeam.Blue);
+        }
+        if (i == 1)
+        {
+            player[i].transform.position = playerStartPos2.position;
+            SetPlayerTeam(player[i], red, Player_Team.ColorTeam.Red);
         }
         i++;
     }
@@ -89,7 +142,7 @@ public class Manager_JoinPlayer : MonoBehaviour
         player.GetComponent<Player_Team>().team = colorTeam;
         player.GetComponent<Player_Team>().indexPlayer = i;
         player.GetComponent<MeshRenderer>().material.color = teamColor;
-        player.GetComponent<MeshRenderer>().material.SetColor("_EmissiveColor",teamColor );
+        player.GetComponent<MeshRenderer>().material.SetColor("_EmissiveColor", teamColor);
 
         Player_Mouvement Mouvement = player.GetComponent<Player_Mouvement>();
         MeshRenderer mesh = Mouvement.model.GetComponent<MeshRenderer>();
@@ -127,10 +180,10 @@ public class Manager_JoinPlayer : MonoBehaviour
     {
         player[0].transform.position = playerStartPos1.position;
         player[0].transform.rotation = Quaternion.identity;
-      //  player[0].GetComponent<MeshRenderer>().enabled = true;
+        //  player[0].GetComponent<MeshRenderer>().enabled = true;
         player[1].transform.position = playerStartPos2.position;
         player[1].transform.rotation = Quaternion.identity;
-       // player[1].GetComponent<MeshRenderer>().enabled = true;
+        // player[1].GetComponent<MeshRenderer>().enabled = true;
         blackHoleInstante.GetComponentInChildren<ParticleSystemForceField>().gravity = 0.15f;
     }
 }

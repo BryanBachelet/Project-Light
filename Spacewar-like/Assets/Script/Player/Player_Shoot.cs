@@ -30,7 +30,6 @@ public class Player_Shoot : MonoBehaviour
     public void Start()
     {
         shootEvent = FMODUnity.RuntimeManager.CreateInstance(ShootEvent);
-       // shootEvent.start();
     }
 
     public void Update()
@@ -41,21 +40,7 @@ public class Player_Shoot : MonoBehaviour
             if (timeEcouleShoot >= timeBtwShoot)
             {
                 activeTir = false;
-                //AddShot();
-                //if(addBullet)
-                //{
-                //    addBullet = false;
-                //    activeTir = false;
-
-                //}
-
-                //if(activeTir)
-                //{
-                //    addBullet = true;
-                //}
-
-                //timeEcouleShoot = 0;
-
+           
             }
             else
             {
@@ -68,8 +53,6 @@ public class Player_Shoot : MonoBehaviour
     {
         if (this.enabled == true && ctx.performed)
         {
-
-
             if (activeTir)
             {
                 return;
@@ -87,8 +70,6 @@ public class Player_Shoot : MonoBehaviour
             shootEvent.start();
             activeTir = true;
             timeEcouleShoot = 0;
-
-            Debug.Log(activeTir);
 
             return;
         }
